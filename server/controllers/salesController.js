@@ -1,4 +1,4 @@
-const Sale = require('../models/Sale');
+const Sale = require('../models/Product');
 
 const getSalesData = async (req, res) => {
   try {

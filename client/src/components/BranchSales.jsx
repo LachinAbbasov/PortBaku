@@ -3,6 +3,7 @@ import DatePicker from 'react-datepicker';
 import { useDispatch } from 'react-redux';
 import { setSalesData } from '../redux/salesSlice';
 import 'react-datepicker/dist/react-datepicker.css';
+import ProductTable from './ProductTable'; // ProductTable bileşenini içe aktar
 
 const BranchSales = () => {
   const dispatch = useDispatch();
@@ -11,7 +12,7 @@ const BranchSales = () => {
   const [endDate, setEndDate] = useState(null);
   const [salesData, setSalesDataLocal] = useState([]);
 
-  const branches = ['Şube 1', 'Şube 2', 'Şube 3'];
+  const branches = ['İnqilab', 'Mərdəkan', 'Şüvalan', 'Aquapark', 'Nargilə', 'Mum', 'Buzovna', 'Bayl'];
 
   const handleBranchClick = (branch) => {
     setSelectedBranch(branch);
@@ -42,7 +43,7 @@ const BranchSales = () => {
 
   return (
     <div>
-      <h1>Şubelerimiz</h1>
+      <h1>Fliallarımız</h1>
       <ul>
         {branches.map((branch, index) => (
           <li key={index} onClick={() => handleBranchClick(branch)}>
@@ -53,7 +54,7 @@ const BranchSales = () => {
 
       {selectedBranch && (
         <div>
-          <h2>{selectedBranch} için Tarih Aralığı Seçin</h2>
+          <h2>Zəhmət olmasa {selectedBranch} flialı üçün tarix aralığı seçin</h2>
           <div>
             <DatePicker
               selected={startDate}
@@ -61,7 +62,7 @@ const BranchSales = () => {
               selectsStart
               startDate={startDate}
               endDate={endDate}
-              placeholderText="Başlangıç Tarihi"
+              placeholderText="MM/DD/YYYY"
             />
             <DatePicker
               selected={endDate}
@@ -69,7 +70,7 @@ const BranchSales = () => {
               selectsEnd
               startDate={startDate}
               endDate={endDate}
-              placeholderText="Bitiş Tarihi"
+              placeholderText="MM/DD/YYYY"
               minDate={startDate}
             />
           </div>
@@ -78,33 +79,7 @@ const BranchSales = () => {
       )}
 
       {salesData.length > 0 && (
-        <div>
-          <h2>Satış Verileri</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>Ürün Adı</th>
-                <th>Satılan Miktar</th>
-                <th>Hazırlanan Miktar</th>
-                <th>Kullanım Tarihi Geçmiş</th>
-                <th>Kalan Miktar</th>
-                <th>Elverişli Olmayan Miktar</th>
-              </tr>
-            </thead>
-            <tbody>
-              {salesData.map((item, index) => (
-                <tr key={index}>
-                  <td>{item.productName}</td>
-                  <td>{item.soldQuantity}</td>
-                  <td>{item.preparedQuantity}</td>
-                  <td>{item.expiredQuantity}</td>
-                  <td>{item.remainingQuantity}</td>
-                  <td>{item.unfitQuantity}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <ProductTable products={salesData} /> // ProductTable bileşenini kullan
       )}
     </div>
   );

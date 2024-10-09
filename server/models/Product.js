@@ -21,7 +21,21 @@ const productSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  stockQuantity: { // Qalıq sahəsi
+    type: Number,
+    required: true,
+    default: 0, // Default dəyəri 0
+  },
 });
+
+// Qalıq hesablaması üçün virtual sahə
+productSchema.virtual('remainingQuantity').get(function() {
+  return this.preparedQuantity - (this.soldQuantity + this.unfitQuantity + this.expiredQuantity);
+});
+
+// Virtual sahəni JSON və Object-yə daxil edin
+productSchema.set('toJSON', { virtuals: true });
+productSchema.set('toObject', { virtuals: true });
 
 const Product = mongoose.model('Product', productSchema);
 

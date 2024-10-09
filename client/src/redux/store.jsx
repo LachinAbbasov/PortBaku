@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import salesReducer from './salesSlice';
+import productReducer from './productSlice'; // productSlice faylını import edin
 
-export const store = configureStore({
+const store = configureStore({
   reducer: {
-    sales: salesReducer,
+    products: productReducer, // products adı ilə productSlice-i əlavə edin
   },
 });
+
+export default store;

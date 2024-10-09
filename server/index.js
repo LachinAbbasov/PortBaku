@@ -1,25 +1,25 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
 const cors = require('cors');
 require('dotenv').config(); // .env dosyasını yükle
 const Product = require('./models/Product');
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT||5000
 
 // Middleware
 app.use(cors());
-app.use(bodyParser.json());
+
 
 // MongoDB Bağlantısı
-mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.then(() => console.log('MongoDB bağlantısı sağlandı.'))
-.catch((error) => console.error('MongoDB bağlantı hatası:', error));
 
+  mongoose.connect(process.env.MONGODB_URI, {
+  
+  })
+  .then(() => console.log('MongoDB-ə uğurla qoşuldu'))
+  .catch(err => console.error('MongoDB-ə qoşularkən xəta:', err));
+
+  
 // Ürün Ekleme Uç Noktası
 app.post('/api/products', async (req, res) => {
   try {

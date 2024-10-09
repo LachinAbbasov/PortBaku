@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import DatePicker from 'react-datepicker';
-import { useDispatch } from 'react-redux';
-import { setSalesData } from '../redux/salesSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import {selectProducts } from '../redux/productSlice';
 import 'react-datepicker/dist/react-datepicker.css';
-import ProductTable from './ProductTable'; // ProductTable bileşenini içe aktar
+import ProductTable from './ProductTable';
 
 const BranchSales = () => {
   const dispatch = useDispatch();
-  const [selectedBranch, setSelectedBranch] = useState(null);
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
-  const [salesData, setSalesDataLocal] = useState([]);
+  const salesData = useSelector(selectProducts); // Məhsulları seçmək üçün useSelector istifadə edin
+  const [selectedBranch, setSelectedBranch] = React.useState(null);
+  const [startDate, setStartDate] = React.useState(null);
+  const [endDate, setEndDate] = React.useState(null);
 
   const branches = ['İnqilab', 'Mərdəkan', 'Şüvalan', 'Aquapark', 'Nargilə', 'Mum', 'Buzovna', 'Bayl'];
 
@@ -37,9 +37,14 @@ const BranchSales = () => {
     });
 
     const data = await response.json();
-    setSalesDataLocal(data);
-    dispatch(setSalesData(data));
+    dispatch(setSalesData(data)); // Satış məlumatlarını Redux-a əlavə edin
   };
+
+  useEffect(() => {
+    if (salesData.length > 0) {
+      console.log('Satış məlumatları: ', salesData);
+    }
+  }, [salesData]);
 
   return (
     <div>
@@ -79,7 +84,7 @@ const BranchSales = () => {
       )}
 
       {salesData.length > 0 && (
-        <ProductTable products={salesData} /> // ProductTable bileşenini kullan
+        <ProductTable products={salesData} />
       )}
     </div>
   );

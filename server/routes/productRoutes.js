@@ -1,6 +1,7 @@
 const express = require('express');
 const Product = require('../models/Product'); // Mongoose modelini içə aktarırsınız
 const router = express.Router();
+const { createProduct } = require('../controllers/productController'); // Düzgün yolun olduğuna əmin olun
 
 // Bütün məhsulları əldə etmək
 router.get('/', async (req, res) => {
@@ -23,27 +24,8 @@ router.get('/:category', async (req, res) => {
 });
 
 // Yeni məhsul əlavə etmək
-// Ürün Ekleme Uç Noktası
-router.post('/', async (req, res) => {
-  try {
-    const { branchName,productName, soldQuantity, preparedQuantity, unfitQuantity, expiredQuantity } = req.body;
 
-    const newProduct = new Product({
-      branchName,
-      productName,
-      soldQuantity,
-      preparedQuantity,
-      unfitQuantity,
-      expiredQuantity,
-    });
-
-    const savedProduct = await newProduct.save();
-    res.status(201).json(savedProduct);
-  } catch (error) {
-    res.status(500).json({ message: 'Ürün eklenirken hata oluştu.', error });
-  }
-});
-
+router.post('/mehsullar', createProduct);
 // Müəyyən məhsulu yeniləmək
 router.put('/:id', async (req, res) => {
   try {

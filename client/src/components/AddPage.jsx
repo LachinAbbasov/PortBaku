@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button, TextField, MenuItem, Select, InputLabel, FormControl } from '@mui/material';
 import { addProduct, selectProducts } from '../redux/productSlice';
+
 
 const categoryProducts = {
   Mayalı: [
@@ -111,43 +112,52 @@ const categoryProducts = {
     'Tabaka'
   ],
 };
-
 const AddPage = () => {
   const dispatch = useDispatch();
   const products = useSelector(selectProducts);
 
   const branches = ['İnqilab', 'Mərdəkan', 'Şüvalan', 'Aquapark', 'Nargilə', 'Mum', 'Buzovna', 'Bayl'];
 
-  const [selectedCategory, setSelectedCategory] = useState('');
-  const [selectedProduct, setSelectedProduct] = useState('');
+  const [selectedCategory, setSelectedCategory] = React.useState('');
+  const [selectedProduct, setSelectedProduct] = React.useState('');
+  const [branchName, setBranchName] = React.useState('');
+  const [soldQuantity, setSoldQuantity] = React.useState('');
+  const [preparedQuantity, setPreparedQuantity] = React.useState('');
+  const [unfitQuantity, setUnfitQuantity] = React.useState('');
+  const [expiredQuantity, setExpiredQuantity] = React.useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const form = e.target;
+  
     const newProduct = {
-      branchName: form.branchName.value,
-      productName: selectedProduct, // İndi seçilmiş məhsul
-      soldQuantity: Number(form.soldQuantity.value),
-      preparedQuantity: Number(form.preparedQuantity.value),
-      unfitQuantity: Number(form.unfitQuantity.value),
-      expiredQuantity: Number(form.expiredQuantity.value),
+      branchName,
+      productName: selectedProduct,
+      category: selectedCategory, // Seçim kateqoriyası
+      soldQuantity: Number(soldQuantity),
+      preparedQuantity: Number(preparedQuantity),
+      unfitQuantity: Number(unfitQuantity),
+      expiredQuantity: Number(expiredQuantity),
     };
-
-    const response = await fetch('http://localhost:5000/api/mehsullar', {
+  
+    const response = await fetch('http://localhost:5000/api/mehsullar/mehsullar', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(newProduct),
     });
-
+  
     if (response.ok) {
       const savedProduct = await response.json();
-      dispatch(addProduct(savedProduct)); // Yeni məhsulu Redux-a əlavə edin
-      form.reset();
+      dispatch(addProduct(savedProduct));
+      // State'ləri sıfırlayın
+      setBranchName('');
       setSelectedCategory('');
       setSelectedProduct('');
+      setSoldQuantity('');
+      setPreparedQuantity('');
+      setUnfitQuantity('');
+      setExpiredQuantity('');
     } else {
       console.error('Məhsul əlavə edilərkən xəta baş verdi.');
     }
@@ -164,7 +174,8 @@ const AddPage = () => {
         <FormControl fullWidth margin="normal">
           <InputLabel>Filialın Adı</InputLabel>
           <Select
-            name="branchName"
+            value={branchName}
+            onChange={(e) => setBranchName(e.target.value)}
             label="Filialın Adı"
             required
           >
@@ -210,33 +221,37 @@ const AddPage = () => {
         </FormControl>
 
         <TextField
-          name="soldQuantity"
           label="Satış Miqdarı"
           type='number'
+          value={soldQuantity}
+          onChange={(e) => setSoldQuantity(e.target.value)}
           required
           fullWidth
           margin="normal"
         />
         <TextField
-          name="preparedQuantity"
           label="Hazırlanan Miqdar"
           type='number'
+          value={preparedQuantity}
+          onChange={(e) => setPreparedQuantity(e.target.value)}
           required
           fullWidth
           margin="normal"
         />
         <TextField
-          name="unfitQuantity"
           label="Yararsız"
           type='number'
+          value={unfitQuantity}
+          onChange={(e) => setUnfitQuantity(e.target.value)}
           required
           fullWidth
           margin="normal"
         />
         <TextField
-          name="expiredQuantity"
           label="Satış Tarixi Bitmiş"
           type='number'
+          value={expiredQuantity}
+          onChange={(e) => setExpiredQuantity(e.target.value)}
           required
           fullWidth
           margin="normal"

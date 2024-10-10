@@ -1,19 +1,36 @@
 import { createSlice } from '@reduxjs/toolkit';
-
 const productSlice = createSlice({
   name: 'products',
-  initialState: [],
+  initialState: {
+    products: [],
+    branchName: '',
+    startDate: '',
+    endDate: '',
+  },
   reducers: {
     addProduct: (state, action) => {
-      state.push(action.payload); // Yeni məhsulu əlavə et
+      state.products.push(action.payload); // Yeni məhsulu əlavə et
     },
     setProducts: (state, action) => {
-      return action.payload; // Backend-dən gələn bütün məhsulları state-ə əlavə et
+      state.products = action.payload; // Backend-dən gələn bütün məhsulları state-ə əlavə et
+    },
+    setBranchName: (state, action) => {
+      state.branchName = action.payload; // Filial adını güncəllə
+    },
+    setStartDate: (state, action) => {
+      state.startDate = action.payload; // Başlanğıc tarixini güncəllə
+    },
+    setEndDate: (state, action) => {
+      state.endDate = action.payload; // Bitiş tarixini güncəllə
     },
   },
 });
 
-export const { addProduct, setProducts } = productSlice.actions; // `setProducts`-i ixrac edin
-export const selectProducts = (state) => state.products; // Məhsulları seçmək üçün selektor
+// Eylemleri ve seçicileri dışa aktar
+export const { addProduct, setProducts, setBranchName, setStartDate, setEndDate } = productSlice.actions;
+export const selectProducts = (state) => state.products.products;
+export const selectBranchName = (state) => state.products.branchName;
+export const selectStartDate = (state) => state.products.startDate;
+export const selectEndDate = (state) => state.products.endDate;
 
 export default productSlice.reducer; // Reducer-i ixrac et

@@ -34,6 +34,10 @@ const productSchema = new mongoose.Schema({
     type: Date,
     default: Date.now, // Avtomatik olaraq cari tarixi alır
   },
+  category: { // Kategoriya sahəsi
+    type: [String], // Birden fazla kategori için dizi
+    required: true,
+  },
 });
 
 // Qalıq hesablaması üçün virtual sahə

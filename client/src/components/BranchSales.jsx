@@ -1,91 +1,52 @@
-import React, { useEffect } from 'react';
-import DatePicker from 'react-datepicker';
-import { useDispatch, useSelector } from 'react-redux';
-import {selectProducts } from '../redux/productSlice';
-import 'react-datepicker/dist/react-datepicker.css';
-import ProductTable from './ProductTable';
+import React, { useState } from 'react';
+import ProductTable from './ProductTable'; // Cədvəl komponenti
+import styles from '../Sass/BranchSales.module.scss';
 
 const BranchSales = () => {
-  const dispatch = useDispatch();
-  const salesData = useSelector(selectProducts); // Məhsulları seçmək üçün useSelector istifadə edin
-  const [selectedBranch, setSelectedBranch] = React.useState(null);
-  const [startDate, setStartDate] = React.useState(null);
-  const [endDate, setEndDate] = React.useState(null);
+  const [branchName, setBranchName] = useState('');
+  const [date, setDate] = useState('');
 
-  const branches = ['İnqilab', 'Mərdəkan', 'Şüvalan', 'Aquapark', 'Nargilə', 'Mum', 'Buzovna', 'Bayl'];
+  // Filial adlarının massivini yaradın
+  const branchNames = [
+    'İnqilab',
+    'Mərdəkan',
+    'Şüvalan',
+    'Aquapark',
+    'Nargilə',
+    'Mum',
+    'Buzovna',
+    'Bayl'
+  ];
 
-  const handleBranchClick = (branch) => {
-    setSelectedBranch(branch);
+  const handleBranchChange = (event) => {
+    setBranchName(event.target.value);
   };
 
-  const handleDateRangeSubmit = async () => {
-    if (!startDate || !endDate || !selectedBranch) {
-      alert('Lütfen bir şube ve tarih aralığı seçin.');
-      return;
-    }
-
-    const response = await fetch('http://localhost:5000/api/sales', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        branch: selectedBranch,
-        startDate,
-        endDate,
-      }),
-    });
-
-    const data = await response.json();
-    dispatch(setSalesData(data)); // Satış məlumatlarını Redux-a əlavə edin
+  const handleDateChange = (event) => {
+    setDate(event.target.value);
   };
-
-  useEffect(() => {
-    if (salesData.length > 0) {
-      console.log('Satış məlumatları: ', salesData);
-    }
-  }, [salesData]);
 
   return (
-    <div>
-      <h1>Fliallarımız</h1>
-      <ul>
-        {branches.map((branch, index) => (
-          <li key={index} onClick={() => handleBranchClick(branch)}>
-            {branch}
-          </li>
+    <div className={styles.container}>
+      <h1>Filial Satışları</h1>
+      <label htmlFor="branch">Filial Seçin:</label>
+      <select id="branch" value={branchName} onChange={handleBranchChange}>
+        <option value="">Seçin</option>
+        {branchNames.map((branch, index) => (
+          <option key={index} value={branch}>{branch}</option>
         ))}
-      </ul>
+      </select>
 
-      {selectedBranch && (
-        <div>
-          <h2>Zəhmət olmasa {selectedBranch} flialı üçün tarix aralığı seçin</h2>
-          <div>
-            <DatePicker
-              selected={startDate}
-              onChange={(date) => setStartDate(date)}
-              selectsStart
-              startDate={startDate}
-              endDate={endDate}
-              placeholderText="MM/DD/YYYY"
-            />
-            <DatePicker
-              selected={endDate}
-              onChange={(date) => setEndDate(date)}
-              selectsEnd
-              startDate={startDate}
-              endDate={endDate}
-              placeholderText="MM/DD/YYYY"
-              minDate={startDate}
-            />
-          </div>
-          <button onClick={handleDateRangeSubmit}>Verileri Getir</button>
-        </div>
-      )}
+      <label htmlFor="date">Tarixi Seçin:</label>
+      <input 
+        type="date" 
+        id="date" 
+        value={date} 
+        onChange={handleDateChange} 
+      />
 
-      {salesData.length > 0 && (
-        <ProductTable products={salesData} />
-      )}
+      {/* ProductTable komponentinə filial adı və tarixi verin */}
+      <ProductTable branchName={branchName} date={date} />
     </div>
   );
 };

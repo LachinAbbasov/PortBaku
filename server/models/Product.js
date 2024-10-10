@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
 const productSchema = new mongoose.Schema({
+  branchName: {
+    type: String,
+    required: true,
+  },
   productName: {
     type: String,
     required: true,
@@ -25,6 +29,10 @@ const productSchema = new mongoose.Schema({
     type: Number,
     required: true,
     default: 0, // Default dəyəri 0
+  },
+  createdAt: { // Yaradılma tarixi
+    type: Date,
+    default: Date.now, // Avtomatik olaraq cari tarixi alır
   },
 });
 

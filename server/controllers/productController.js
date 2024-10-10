@@ -1,13 +1,14 @@
 const createProduct = async (req, res) => {
     try {
-      const { productName, soldQuantity, preparedQuantity, unfitQuantity, expiredQuantity } = req.body;
+      const { branchname,productName, soldQuantity, preparedQuantity, unfitQuantity, expiredQuantity } = req.body;
   
       // Məlumatların düzgünlüyünü yoxlayın
-      if (!productName || !soldQuantity || !preparedQuantity || !unfitQuantity || !expiredQuantity) {
+      if (!branchname||!productName || !soldQuantity || !preparedQuantity || !unfitQuantity || !expiredQuantity) {
         return res.status(400).json({ message: 'Bütün sahələr doldurulmalıdır.' });
       }
   
       const newProduct = new Product({
+        branchname,
         productName,
         soldQuantity,
         preparedQuantity,

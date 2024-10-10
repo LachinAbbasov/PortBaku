@@ -23,23 +23,24 @@ router.get('/:category', async (req, res) => {
 });
 
 // Yeni məhsul əlavə etmək
+// Ürün Ekleme Uç Noktası
 router.post('/', async (req, res) => {
-  const { productName, soldQuantity, preparedQuantity, unfitQuantity, expiredQuantity } = req.body;
-
-  const newProduct = new Product({
-    productName,
-    soldQuantity,
-    preparedQuantity,
-    unfitQuantity,
-    expiredQuantity,
-    stockQuantity: preparedQuantity, // Qalıq sahəsini hazırlayırıq
-  });
-
   try {
+    const { branchName,productName, soldQuantity, preparedQuantity, unfitQuantity, expiredQuantity } = req.body;
+
+    const newProduct = new Product({
+      branchName,
+      productName,
+      soldQuantity,
+      preparedQuantity,
+      unfitQuantity,
+      expiredQuantity,
+    });
+
     const savedProduct = await newProduct.save();
     res.status(201).json(savedProduct);
   } catch (error) {
-    res.status(400).json({ message: 'Error saving product' });
+    res.status(500).json({ message: 'Ürün eklenirken hata oluştu.', error });
   }
 });
 

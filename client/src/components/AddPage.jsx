@@ -152,14 +152,13 @@ const AddPage = () => {
     };
   
     try {
-      const response = await fetch('http://localhost:5000/api/products/add', {
+      const response = await fetch('http://localhost:5000/api/mehsullar/mehsullar', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(newProduct),
       });
-  
       const result = await response.json();
       if (response.ok) {
         dispatch(addProduct(result));  // Add the product to Redux state

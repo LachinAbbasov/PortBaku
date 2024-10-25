@@ -1,16 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom/client'; // 'react-dom' yerine 'react-dom/client' kullanılıyor
 import { Provider } from 'react-redux';
-import { store } from './redux/store';
+import store from './redux/store';  // Redux store'unuzu içe aktarıyorsunuz
 import App from './App';
-import './index.css'; // Stilin tətbiqi üçün, əgər varsa
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// Uygulamanın kök elementini alıyoruz
+const rootElement = document.getElementById('root');
+
+// createRoot API'sini kullanarak render ediyoruz
+const root = ReactDOM.createRoot(rootElement);
 
 root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>
+  <Provider store={store}>
+    <App />
+  </Provider>
 );

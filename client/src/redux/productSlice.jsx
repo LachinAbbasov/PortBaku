@@ -1,36 +1,46 @@
-import { createSlice } from '@reduxjs/toolkit';
+// src/redux/productSlice.js
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
+
+// Filialları fetch et
+export const fetchBranches = createAsyncThunk('products/fetchBranches', async () => {
+  const response = await axios.get('/api/branches');
+  return response.data;
+});
+
+// Kategoriyaları fetch et
+export const fetchCategories = createAsyncThunk('products/fetchCategories', async () => {
+  const response = await axios.get('/api/categories');
+  return response.data;
+});
+
+// Məhsulları fetch et
+export const fetchProducts = createAsyncThunk('products/fetchProducts', async () => {
+  const response = await axios.get('/api/products');
+  return response.data;
+});
+
 const productSlice = createSlice({
   name: 'products',
   initialState: {
+    branches: [],
+    categories: [],
     products: [],
-    branchName: '',
-    startDate: '',
-    endDate: '',
+    loading: false,
   },
-  reducers: {
-    addProduct: (state, action) => {
-      state.products.push(action.payload); // Yeni məhsulu əlavə et
-    },
-    setProducts: (state, action) => {
-      state.products = action.payload; // Backend-dən gələn bütün məhsulları state-ə əlavə et
-    },
-    setBranchName: (state, action) => {
-      state.branchName = action.payload; // Filial adını güncəllə
-    },
-    setStartDate: (state, action) => {
-      state.startDate = action.payload; // Başlanğıc tarixini güncəllə
-    },
-    setEndDate: (state, action) => {
-      state.endDate = action.payload; // Bitiş tarixini güncəllə
-    },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchBranches.fulfilled, (state, action) => {
+        state.branches = action.payload;
+      })
+      .addCase(fetchCategories.fulfilled, (state, action) => {
+        state.categories = action.payload;
+      })
+      .addCase(fetchProducts.fulfilled, (state, action) => {
+        state.products = action.payload;
+      });
   },
 });
 
-// Eylemleri ve seçicileri dışa aktar
-export const { addProduct, setProducts, setBranchName, setStartDate, setEndDate } = productSlice.actions;
-export const selectProducts = (state) => state.products.products;
-export const selectBranchName = (state) => state.products.branchName;
-export const selectStartDate = (state) => state.products.startDate;
-export const selectEndDate = (state) => state.products.endDate;
-
-export default productSlice.reducer; // Reducer-i ixrac et
+export default productSlice.reducer;

@@ -1,16 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App.jsx';
 import { Provider } from 'react-redux';
-import store from './redux/store'; // Store'u import edin
-import './index.css';
-import 'antd/dist/reset.css';
+import { store } from './redux/store';
+import App from './App';
+import './index.css'; // Stilin tətbiqi üçün, əgər varsa
 
+const root = ReactDOM.createRoot(document.getElementById('root'));
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+root.render(
   <React.StrictMode>
-    <Provider store={store}> {/* Provider ilə sarın */}
+    <Provider store={store}>
       <App />
     </Provider>
-  </React.StrictMode>,
+  </React.StrictMode>
 );

@@ -1,18 +1,33 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import BranchSales from './components/Branchsales';
-import AddPage from './components/AddPage';
-import Navbar from './components/NavBar'; // Navbar bileşenini içe aktar
+import { Layout } from 'antd';
+import { Provider } from 'react-redux';
+import { store } from './redux/store';
+import CreateProduct from './components/CreateProduct';
+import ProductTable from './components/ProductTable';
 
-const App = () => (
-  <Router>
-    <Navbar /> {/* Navbar'ı burada ekleyin */}
-    <Routes>
-      <Route path="/" element={<BranchSales />} />
-      <Route path="/add" element={<AddPage />} />
-      {/* Diğer rotalar */}
-    </Routes>
-  </Router>
-);
+const { Header, Content, Footer } = Layout;
+
+const App = () => {
+  return (
+    <Provider store={store}>
+      <Layout style={{ minHeight: '100vh' }}>
+        <Header style={{ color: 'white', fontSize: '20px', textAlign: 'center' }}>
+          Product Management System
+        </Header>
+        
+        <Content style={{ padding: '20px' }}>
+          <div style={{ marginBottom: '20px' }}>
+            <CreateProduct />
+          </div>
+          <ProductTable />
+        </Content>
+        
+        <Footer style={{ textAlign: 'center' }}>
+          © 2024 Product Management System
+        </Footer>
+      </Layout>
+    </Provider>
+  );
+};
 
 export default App;

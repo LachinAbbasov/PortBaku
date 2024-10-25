@@ -1,0 +1,166 @@
+1. Mayalı
+Endpoint: /api/mehsullar/mayalilar
+
+json
+Copy code
+{
+  "branchName": "Mərdəkan",
+  "products": [
+    { "productName": "Sadə bulka", "price": 1.10 },
+    { "productName": "Kişmişli", "price": 1.10 },
+    { "productName": "Qarabağ kətəsi", "price": 1.40 },
+    { "productName": "Simit", "price": 1.20 },
+    { "productName": "Vatruşka", "price": 1.20 },
+    { "productName": "Alma cemli", "price": 1.30 },
+    { "productName": "Kəsmikli kökə", "price": 1.50 },
+    { "productName": "Şokaladlı", "price": 1.70 },
+    { "productName": "Albalı cemli", "price": 1.30 },
+    { "productName": "Qozlu", "price": 1.70 },
+    { "productName": "Qoğal şor", "price": 1.20 },
+    { "productName": "Qoğal şirin", "price": 1.10 },
+    { "productName": "Darçınlı bulka", "price": 1.10 },
+    { "productName": "Minni pizza", "price": 3.50 },
+    { "productName": "Hod-dog", "price": 1.80 },
+    { "productName": "Qaraköy", "price": 1.30 },
+    { "productName": "Özbək dönəri", "price": 2.20 },
+    { "productName": "Xaçapuri", "price": 1.80 },
+    { "productName": "Qatlama toyuqlu", "price": 15, "weight": "1 kq" },
+    { "productName": "Peraşki kartoflu", "price": 1.30 },
+    { "productName": "Peraşki toyuqlu", "price": 1.60 },
+    { "productName": "Pendirli açma", "price": 1.90 },
+    { "productName": "Fransız bulkası", "price": 1.90 }
+  ]
+}
+2. Tort
+Endpoint: /api/mehsullar/tortlar
+
+json
+Copy code
+{
+  "branchName": "Mərdəkan",
+  "products": [
+    { "productName": "Yay tortu M", "price": 30.00 },
+    { "productName": "Yay tortu S", "price": 25.00 },
+    { "productName": "Birdmilk M", "price": 25.00 },
+    { "productName": "Birdmilk S", "price": 19.00 },
+    { "productName": "Honey M", "price": 23.00 },
+    { "productName": "Honey S", "price": 18.00 },
+    { "productName": "Napaleon M", "price": 22.00 },
+    { "productName": "Napaleon S", "price": 18.00 },
+    { "productName": "Banana cake M", "price": 20.00 },
+    { "productName": "Banana cake S", "price": 14.00 },
+    { "productName": "Damla şokaladlı M", "price": 20.00 },
+    { "productName": "Damla şokaladlı S", "price": 14.00 },
+    { "productName": "Kiyeviski M", "price": 21.00 },
+    { "productName": "Kiyeviski S", "price": 15.00 },
+    { "productName": "Kudruyaj M", "price": 27.00 },
+    { "productName": "Kudruyaj S", "price": 21.00 },
+    { "productName": "Blinçik M", "price": 24.00 },
+    { "productName": "Blinçik S", "price": 18.00 },
+    { "productName": "Black Forest roll", "price": 12.00 },
+    { "productName": "Redvel vet roll", "price": 13.00 },
+    { "productName": "Orange cake", "price": 9.50 },
+    { "productName": "Engilis cake", "price": 7.00 },
+    { "productName": "Skazka roll", "price": 11.00 },
+    { "productName": "Birdmilk desert", "price": 3.00 },
+    { "productName": "Honey desert", "price": 3.50 },
+    { "productName": "Tiramisu desert", "price": 4.50 },
+    { "productName": "Praqa desert", "price": 2.70 },
+    { "productName": "Kudruyaj desert", "price": 3.50 },
+    { "productName": "San Sebastian", "price": 4.50 }
+  ]
+}
+3. Paxlavalar
+Endpoint: /api/mehsullar/paxlavalar
+
+json
+Copy code
+{
+  "branchName": "Mərdəkan",
+  "products": [
+    { "productName": "Qozlu paxlava", "price": 20, "weight": "1 kq" },
+    { "productName": "Fındıqlı paxlava", "price": 20, "weight": "1 kq" },
+    { "productName": "Şokaladlı paxlava", "price": 20, "weight": "1 kq" },
+    { "productName": "Türk paxlavaları", "price": 25, "weight": "1 kq" }
+  ]
+}
+4. QuruMallar
+Endpoint: /api/mehsullar/qurumallar
+
+json
+Copy code
+{
+  "branchName": "Mərdəkan",
+  "products": [
+    { "productName": "Şəkərbura", "price": 1.80 },
+    { "productName": "Acı badəm", "price": 20, "weight": "1 kq" },
+    { "productName": "Şəkər çörəyi", "price": 11, "weight": "1 kq" },
+    { "productName": "Mutaki", "price": 19, "weight": "1 kq" },
+    { "productName": "Qozlu kətə", "price": 17, "weight": "1 kq" },
+    { "productName": "Limonçik", "price": 15, "weight": "1 kq" },
+    { "productName": "Damla peçeniyası", "price": 12, "weight": "1 kq" },
+    { "productName": "Qızıl gül (kukis)", "price": 16, "weight": "1 kq" }
+  ]
+}
+5. Kulinaria
+Endpoint: /api/mehsullar/kulinariyalar
+
+json
+Copy code
+{
+  "branchName": "Mərdəkan",
+  "products": [
+    { "productName": "Sendiviç Toyuq", "price": 4.80 },
+    { "productName": "Sendiviç Club", "price": 4.90 },
+    { "productName": "Sendiviç Vetçina", "price": 4.80 },
+    { "productName": "Sendiviç Salami", "price": 5.20 },
+    { "productName": "Sendiviç Salmon", "price": 7.00 },
+    { "productName": "Blinçik ətli", "price": 1.80 },
+    { "productName": "Blinçik toyuqlu", "price": 1.60 },
+    { "productName": "Blinçik toyuq tərəvəzli", "price": 1.60 },
+    { "productName": "Blinçik kəsmikli", "price": 1.60 },
+    { "productName": "Şumardin blinçik", "price": 2.50 },
+    { "productName": "Toyuq nuggets", "price": 2.30 },
+    { "productName": "Şnitzel", "price": 4.80 },
+    { "productName": "Toyuq kotleti", "price": 4.30 },
+    { "productName": "Toyuq çöp şiş", "price": 3.50 }
+  ]
+}
+6. Salatlar
+Endpoint: /api/mehsullar/salatlar
+
+json
+Copy code
+{
+  "branchName": "Mərdəkan",
+  "products": [
+    { "productName": "Paytaxt salatı", "price": 23, "weight": "1 kq" },
+    { "productName": "Toyuq salatı mayanezli", "price": 20, "weight": "1 kq" },
+    { "productName": "Toyuq salatı mayonezsiz", "price": 20, "weight": "1 kq" },
+    { "productName": "Vinegret salatı", "price": 20, "weight": "1 kq" },
+    { "productName": "Gavalı salatı", "price": 23, "weight": "1 kq" },
+    { "productName": "Mimoza salatı", "price": 22, "weight": "1 kq" },
+    { "productName": "Nar salatı", "price": 22, "weight": "1 kq" },
+    { "productName": "Çuğundur salatı", "price": 15, "weight": "1 kq" }
+  ]
+}
+7. Yeməklər
+Endpoint: /api/mehsullar/yemekler
+
+json
+Copy code
+{
+  "branchName": "Mərdəkan",
+  "products": [
+    { "productName": "Toyuq file", "price": 28, "weight": "1 kq" },
+    { "productName": "Fajitos", "price": 23, "weight": "1 kq" },
+    { "productName": "Zəfəran plov", "price": 15, "weight": "1 kq" },
+    { "productName": "Şəhriyyə plov", "price": 14, "weight": "1 kq" },
+    { "productName": "Qarabaşaq", "price": 10, "weight": "1 kq" },
+    { "productName": "Ev sayağı kartof", "price": 10, "weight": "1 kq" },
+    { "productName": "Sobada tərəvəz", "price": 13, "weight": "1 kq" },
+    { "productName": "Qril", "price": 11.50 },
+    { "productName": "Ləvəngi", "price": 13.50 },
+    { "productName": "Tabaka", "price": 13.00 }
+  ]
+}

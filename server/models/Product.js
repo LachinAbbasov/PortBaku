@@ -25,29 +25,49 @@ const productSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  stockQuantity: { // Qalıq sahəsi
+  stockQuantity: {
     type: Number,
     required: true,
-    default: 0, // Default dəyəri 0
+    default: 0, // Başlanğıc dəyəri 0 olacaq
   },
-  createdAt: { // Yaradılma tarixi
+  price: {
+    type: Number,
+    required: true,
+  },
+  totalPrice: {
+    type: Number,
+    required: true,
+    default: 0,
+  },
+  createdAt: {
     type: Date,
-    default: Date.now, // Avtomatik olaraq cari tarixi alır
+    default: Date.now,
   },
-  category: { // Kategoriya sahəsi
-    type: [String], // Birden fazla kategori için dizi
+  category: {
+    type: [String],
     required: true,
   },
 });
 
-// Qalıq hesablaması üçün virtual sahə
-productSchema.virtual('remainingQuantity').get(function() {
-  return this.preparedQuantity - (this.soldQuantity + this.unfitQuantity + this.expiredQuantity);
+// Yeni məhsul əlavə edilərkən və ya yenilənərkən ümumi qiyməti və qalıq miqdarı hesablayır
+productSchema.pre('save', function (next) {
+  this.totalPrice = this.soldQuantity * this.price;
+  this.stockQuantity = this.preparedQuantity - (this.soldQuantity + this.unfitQuantity + this.expiredQuantity);
+  next();
 });
 
-// Virtual sahəni JSON və Object-yə daxil edin
-productSchema.set('toJSON', { virtuals: true });
-productSchema.set('toObject', { virtuals: true });
+// Yeniləmə zamanı ümumi qiymət və qalıq miqdarını yeniləyən middleware
+productSchema.pre('findOneAndUpdate', function (next) {
+  const update = this.getUpdate();
+
+  if (update.soldQuantity || update.preparedQuantity || update.unfitQuantity || update.expiredQuantity || update.price) {
+    // Ümumi qiymət və qalıq miqdarı yeniləyir
+    update.totalPrice = (update.soldQuantity || 0) * (update.price || 0);
+    update.stockQuantity = (update.preparedQuantity || 0) - ((update.soldQuantity || 0) + (update.unfitQuantity || 0) + (update.expiredQuantity || 0));
+  }
+
+  next();
+});
 
 const Product = mongoose.model('Product', productSchema);
 

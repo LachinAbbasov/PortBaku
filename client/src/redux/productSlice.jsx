@@ -7,6 +7,13 @@ export const fetchProducts = createAsyncThunk('product/fetchProducts', async () 
   return response.data;
 });
 
+// Async thunk to update a product
+export const updateProduct = createAsyncThunk('product/updateProduct', async (updatedProduct) => {
+  const { _id, ...updates } = updatedProduct;
+  const response = await axios.patch(`http://localhost:5000/api/mehsullar/${_id}`, updates);
+  return response.data;
+});
+
 const productSlice = createSlice({
   name: 'product',
   initialState: {
@@ -55,6 +62,17 @@ const productSlice = createSlice({
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         state.status = 'failed';
+        state.error = action.error.message;
+      })
+      .addCase(updateProduct.fulfilled, (state, action) => {
+        // Güncellenmiş ürünü state'teki ürünler listesinde bul ve güncelle
+        const index = state.products.findIndex((product) => product._id === action.payload._id);
+        if (index !== -1) {
+          state.products[index] = action.payload;
+          productSlice.caseReducers.filterProducts(state); // Filtreleri yeniden uygula
+        }
+      })
+      .addCase(updateProduct.rejected, (state, action) => {
         state.error = action.error.message;
       });
   },

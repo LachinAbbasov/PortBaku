@@ -4,8 +4,9 @@ const {
   getProducts,
   getProductById,
   updateProduct,
+  patchProduct,  // PATCH metodu ekleniyor
   deleteProduct
-} = require('../controllers/productController');  // Import doğru mu?
+} = require('../controllers/productController');  // Import doğru, sadece patchProduct da eklendi
 
 const router = express.Router();
 
@@ -20,6 +21,11 @@ router.post('/', createProduct);
 
 // Məhsulu yeniləmək (Update)
 router.put('/:id', updateProduct);
+
+// Məhsulu qismən yeniləmək (Partial Update - Patch)
+router.patch('/:id', patchProduct); // PATCH route düzgün təyin edilməlidir
+
+
 
 // Məhsulu silmək (Delete)
 router.delete('/:id', deleteProduct);

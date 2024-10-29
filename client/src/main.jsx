@@ -1,17 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client'; // 'react-dom' yerine 'react-dom/client' kullanılıyor
+import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
-import store from './redux/store';  // Redux store'unuzu içe aktarıyorsunuz
+import { PersistGate } from 'redux-persist/integration/react';
+import store, { persistor } from './redux/store';
 import App from './App';
 
-// Uygulamanın kök elementini alıyoruz
 const rootElement = document.getElementById('root');
-
-// createRoot API'sini kullanarak render ediyoruz
 const root = ReactDOM.createRoot(rootElement);
 
 root.render(
   <Provider store={store}>
-    <App />
+    <PersistGate loading={null} persistor={persistor}>
+      <App />
+    </PersistGate>
   </Provider>
 );

@@ -1,166 +1,1154 @@
-1. Mayalı
-Endpoint: /api/mehsullar/mayalilar
-
-json
-Copy code
-{
-  "branchName": "Mərdəkan",
-  "products": [
-    { "productName": "Sadə bulka", "price": 1.10 },
-    { "productName": "Kişmişli", "price": 1.10 },
-    { "productName": "Qarabağ kətəsi", "price": 1.40 },
-    { "productName": "Simit", "price": 1.20 },
-    { "productName": "Vatruşka", "price": 1.20 },
-    { "productName": "Alma cemli", "price": 1.30 },
-    { "productName": "Kəsmikli kökə", "price": 1.50 },
-    { "productName": "Şokaladlı", "price": 1.70 },
-    { "productName": "Albalı cemli", "price": 1.30 },
-    { "productName": "Qozlu", "price": 1.70 },
-    { "productName": "Qoğal şor", "price": 1.20 },
-    { "productName": "Qoğal şirin", "price": 1.10 },
-    { "productName": "Darçınlı bulka", "price": 1.10 },
-    { "productName": "Minni pizza", "price": 3.50 },
-    { "productName": "Hod-dog", "price": 1.80 },
-    { "productName": "Qaraköy", "price": 1.30 },
-    { "productName": "Özbək dönəri", "price": 2.20 },
-    { "productName": "Xaçapuri", "price": 1.80 },
-    { "productName": "Qatlama toyuqlu", "price": 15, "weight": "1 kq" },
-    { "productName": "Peraşki kartoflu", "price": 1.30 },
-    { "productName": "Peraşki toyuqlu", "price": 1.60 },
-    { "productName": "Pendirli açma", "price": 1.90 },
-    { "productName": "Fransız bulkası", "price": 1.90 }
-  ]
-}
-2. Tort
-Endpoint: /api/mehsullar/tortlar
-
-json
-Copy code
-{
-  "branchName": "Mərdəkan",
-  "products": [
-    { "productName": "Yay tortu M", "price": 30.00 },
-    { "productName": "Yay tortu S", "price": 25.00 },
-    { "productName": "Birdmilk M", "price": 25.00 },
-    { "productName": "Birdmilk S", "price": 19.00 },
-    { "productName": "Honey M", "price": 23.00 },
-    { "productName": "Honey S", "price": 18.00 },
-    { "productName": "Napaleon M", "price": 22.00 },
-    { "productName": "Napaleon S", "price": 18.00 },
-    { "productName": "Banana cake M", "price": 20.00 },
-    { "productName": "Banana cake S", "price": 14.00 },
-    { "productName": "Damla şokaladlı M", "price": 20.00 },
-    { "productName": "Damla şokaladlı S", "price": 14.00 },
-    { "productName": "Kiyeviski M", "price": 21.00 },
-    { "productName": "Kiyeviski S", "price": 15.00 },
-    { "productName": "Kudruyaj M", "price": 27.00 },
-    { "productName": "Kudruyaj S", "price": 21.00 },
-    { "productName": "Blinçik M", "price": 24.00 },
-    { "productName": "Blinçik S", "price": 18.00 },
-    { "productName": "Black Forest roll", "price": 12.00 },
-    { "productName": "Redvel vet roll", "price": 13.00 },
-    { "productName": "Orange cake", "price": 9.50 },
-    { "productName": "Engilis cake", "price": 7.00 },
-    { "productName": "Skazka roll", "price": 11.00 },
-    { "productName": "Birdmilk desert", "price": 3.00 },
-    { "productName": "Honey desert", "price": 3.50 },
-    { "productName": "Tiramisu desert", "price": 4.50 },
-    { "productName": "Praqa desert", "price": 2.70 },
-    { "productName": "Kudruyaj desert", "price": 3.50 },
-    { "productName": "San Sebastian", "price": 4.50 }
-  ]
-}
-3. Paxlavalar
-Endpoint: /api/mehsullar/paxlavalar
-
-json
-Copy code
-{
-  "branchName": "Mərdəkan",
-  "products": [
-    { "productName": "Qozlu paxlava", "price": 20, "weight": "1 kq" },
-    { "productName": "Fındıqlı paxlava", "price": 20, "weight": "1 kq" },
-    { "productName": "Şokaladlı paxlava", "price": 20, "weight": "1 kq" },
-    { "productName": "Türk paxlavaları", "price": 25, "weight": "1 kq" }
-  ]
-}
-4. QuruMallar
-Endpoint: /api/mehsullar/qurumallar
-
-json
-Copy code
-{
-  "branchName": "Mərdəkan",
-  "products": [
-    { "productName": "Şəkərbura", "price": 1.80 },
-    { "productName": "Acı badəm", "price": 20, "weight": "1 kq" },
-    { "productName": "Şəkər çörəyi", "price": 11, "weight": "1 kq" },
-    { "productName": "Mutaki", "price": 19, "weight": "1 kq" },
-    { "productName": "Qozlu kətə", "price": 17, "weight": "1 kq" },
-    { "productName": "Limonçik", "price": 15, "weight": "1 kq" },
-    { "productName": "Damla peçeniyası", "price": 12, "weight": "1 kq" },
-    { "productName": "Qızıl gül (kukis)", "price": 16, "weight": "1 kq" }
-  ]
-}
-5. Kulinaria
-Endpoint: /api/mehsullar/kulinariyalar
-
-json
-Copy code
-{
-  "branchName": "Mərdəkan",
-  "products": [
-    { "productName": "Sendiviç Toyuq", "price": 4.80 },
-    { "productName": "Sendiviç Club", "price": 4.90 },
-    { "productName": "Sendiviç Vetçina", "price": 4.80 },
-    { "productName": "Sendiviç Salami", "price": 5.20 },
-    { "productName": "Sendiviç Salmon", "price": 7.00 },
-    { "productName": "Blinçik ətli", "price": 1.80 },
-    { "productName": "Blinçik toyuqlu", "price": 1.60 },
-    { "productName": "Blinçik toyuq tərəvəzli", "price": 1.60 },
-    { "productName": "Blinçik kəsmikli", "price": 1.60 },
-    { "productName": "Şumardin blinçik", "price": 2.50 },
-    { "productName": "Toyuq nuggets", "price": 2.30 },
-    { "productName": "Şnitzel", "price": 4.80 },
-    { "productName": "Toyuq kotleti", "price": 4.30 },
-    { "productName": "Toyuq çöp şiş", "price": 3.50 }
-  ]
-}
-6. Salatlar
-Endpoint: /api/mehsullar/salatlar
-
-json
-Copy code
-{
-  "branchName": "Mərdəkan",
-  "products": [
-    { "productName": "Paytaxt salatı", "price": 23, "weight": "1 kq" },
-    { "productName": "Toyuq salatı mayanezli", "price": 20, "weight": "1 kq" },
-    { "productName": "Toyuq salatı mayonezsiz", "price": 20, "weight": "1 kq" },
-    { "productName": "Vinegret salatı", "price": 20, "weight": "1 kq" },
-    { "productName": "Gavalı salatı", "price": 23, "weight": "1 kq" },
-    { "productName": "Mimoza salatı", "price": 22, "weight": "1 kq" },
-    { "productName": "Nar salatı", "price": 22, "weight": "1 kq" },
-    { "productName": "Çuğundur salatı", "price": 15, "weight": "1 kq" }
-  ]
-}
-7. Yeməklər
-Endpoint: /api/mehsullar/yemekler
-
-json
-Copy code
-{
-  "branchName": "Mərdəkan",
-  "products": [
-    { "productName": "Toyuq file", "price": 28, "weight": "1 kq" },
-    { "productName": "Fajitos", "price": 23, "weight": "1 kq" },
-    { "productName": "Zəfəran plov", "price": 15, "weight": "1 kq" },
-    { "productName": "Şəhriyyə plov", "price": 14, "weight": "1 kq" },
-    { "productName": "Qarabaşaq", "price": 10, "weight": "1 kq" },
-    { "productName": "Ev sayağı kartof", "price": 10, "weight": "1 kq" },
-    { "productName": "Sobada tərəvəz", "price": 13, "weight": "1 kq" },
-    { "productName": "Qril", "price": 11.50 },
-    { "productName": "Ləvəngi", "price": 13.50 },
-    { "productName": "Tabaka", "price": 13.00 }
-  ]
-}
+[
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Kişmişli",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 1.1,
+        "category": [
+            "mayalilar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Simit",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 1.2,
+        "category": [
+            "mayalilar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Vatruşka",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 1.2,
+        "category": [
+            "mayalilar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Kəsmikli kökə",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 1.5,
+        "category": [
+            "mayalilar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Albalı cemli",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 1.3,
+        "category": [
+            "mayalilar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Hod-dog",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 1.8,
+        "category": [
+            "mayalilar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Xaçapuri",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 1.8,
+        "category": [
+            "mayalilar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Qatlama toyuqlu",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 15,
+        "category": [
+            "mayalilar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Peraşki toyuqlu",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 1.6,
+        "category": [
+            "mayalilar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Sadə bulka",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 1.1,
+        "category": [
+            "mayalilar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Şokaladlı",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 1.7,
+        "category": [
+            "mayalilar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Minni pizza",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 3.5,
+        "category": [
+            "mayalilar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Özbək dönəri",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 2.2,
+        "category": [
+            "mayalilar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Qarabağ kətəsi",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 1.4,
+        "category": [
+            "mayalilar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Qoğal şirin",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 1.1,
+        "category": [
+            "mayalilar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Qaraköy",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 1.3,
+        "category": [
+            "mayalilar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Pendirli açma",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 1.9,
+        "category": [
+            "mayalilar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Alma cemli",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 1.3,
+        "category": [
+            "mayalilar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Qozlu",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 1.7,
+        "category": [
+            "mayalilar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Qoğal şor",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 1.2,
+        "category": [
+            "mayalilar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Darçınlı bulka",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 1.1,
+        "category": [
+            "mayalilar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Peraşki kartoflu",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 1.3,
+        "category": [
+            "mayalilar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Fransız bulkası",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 1.9,
+        "category": [
+            "mayalilar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Birdmilk M",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 25,
+        "category": [
+            "tortlar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Honey M",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 23,
+        "category": [
+            "tortlar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Honey S",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 18,
+        "category": [
+            "tortlar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Kudruyaj M",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 27,
+        "category": [
+            "tortlar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Engilis cake",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 7,
+        "category": [
+            "tortlar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Honey desert",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 3.5,
+        "category": [
+            "tortlar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Tiramisu desert",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 4.5,
+        "category": [
+            "tortlar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Praqa desert",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 2.7,
+        "category": [
+            "tortlar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Napaleon S",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 18,
+        "category": [
+            "tortlar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Damla şokaladlı S",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 14,
+        "category": [
+            "tortlar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Blinçik M",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 24,
+        "category": [
+            "tortlar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Redvel vet roll",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 13,
+        "category": [
+            "tortlar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Orange cake",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 9.5,
+        "category": [
+            "tortlar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Birdmilk desert",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 3,
+        "category": [
+            "tortlar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Yay tortu M",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 30,
+        "category": [
+            "tortlar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Yay tortu S",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 25,
+        "category": [
+            "tortlar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Kiyeviski M",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 21,
+        "category": [
+            "tortlar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Kudruyaj S",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 21,
+        "category": [
+            "tortlar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Kudruyaj desert",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 3.5,
+        "category": [
+            "tortlar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "San Sebastian",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 4.5,
+        "category": [
+            "tortlar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Birdmilk S",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 19,
+        "category": [
+            "tortlar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Napaleon M",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 22,
+        "category": [
+            "tortlar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Banana cake M",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 20,
+        "category": [
+            "tortlar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Banana cake S",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 14,
+        "category": [
+            "tortlar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Damla şokaladlı M",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 20,
+        "category": [
+            "tortlar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Kiyeviski S",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 15,
+        "category": [
+            "tortlar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Blinçik S",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 18,
+        "category": [
+            "tortlar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Black Forest roll",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 12,
+        "category": [
+            "tortlar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Skazka roll",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 11,
+        "category": [
+            "tortlar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Qozlu paxlava",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 20,
+        "category": [
+            "paxlavalar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Şokaladlı paxlava",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 20,
+        "category": [
+            "paxlavalar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Fındıqlı paxlava",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 20,
+        "category": [
+            "paxlavalar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Türk paxlavaları",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 25,
+        "category": [
+            "paxlavalar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Limonçik",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 15,
+        "category": [
+            "qurumallar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Acı badəm",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 20,
+        "category": [
+            "qurumallar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Şəkərbura",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 1.8,
+        "category": [
+            "qurumallar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Mutaki",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 19,
+        "category": [
+            "qurumallar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Damla peçeniyası",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 12,
+        "category": [
+            "qurumallar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Şəkər çörəyi",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 11,
+        "category": [
+            "qurumallar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Qozlu kətə",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 17,
+        "category": [
+            "qurumallar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Qızıl gül (kukis)",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 16,
+        "category": [
+            "qurumallar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Sendiviç Toyuq",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 4.8,
+        "category": [
+            "kulinariyalar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Sendiviç Vetçina",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 4.8,
+        "category": [
+            "kulinariyalar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Sendiviç Club",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 4.9,
+        "category": [
+            "kulinariyalar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Sendiviç Salmon",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 7,
+        "category": [
+            "kulinariyalar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Toyuq çöp şiş",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 3.5,
+        "category": [
+            "kulinariyalar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Sendiviç Salami",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 5.2,
+        "category": [
+            "kulinariyalar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Blinçik toyuq tərəvəzli",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 1.6,
+        "category": [
+            "kulinariyalar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Şnitzel",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 4.8,
+        "category": [
+            "kulinariyalar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Blinçik toyuqlu",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 1.6,
+        "category": [
+            "kulinariyalar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Toyuq nuggets",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 2.3,
+        "category": [
+            "kulinariyalar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Toyuq kotleti",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 4.3,
+        "category": [
+            "kulinariyalar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Blinçik ətli",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 1.8,
+        "category": [
+            "kulinariyalar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Blinçik kəsmikli",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 1.6,
+        "category": [
+            "kulinariyalar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Şumardin blinçik",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 2.5,
+        "category": [
+            "kulinariyalar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Gavalı salatı",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 23,
+        "category": [
+            "salatlar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Mimoza salatı",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 22,
+        "category": [
+            "salatlar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Nar salatı",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 22,
+        "category": [
+            "salatlar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Çuğundur salatı",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 15,
+        "category": [
+            "salatlar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Toyuq salatı mayanezli",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 20,
+        "category": [
+            "salatlar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Toyuq salatı mayonezsiz",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 20,
+        "category": [
+            "salatlar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Vinegret salatı",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 20,
+        "category": [
+            "salatlar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Paytaxt salatı",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 23,
+        "category": [
+            "salatlar"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Fajitos",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 23,
+        "category": [
+            "yemekler"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Ev sayağı kartof",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 10,
+        "category": [
+            "yemekler"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Ləvəngi",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 13.5,
+        "category": [
+            "yemekler"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Tabaka",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 13,
+        "category": [
+            "yemekler"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Zəfəran plov",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 15,
+        "category": [
+            "yemekler"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Qril",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 11.5,
+        "category": [
+            "yemekler"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Toyuq file",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 28,
+        "category": [
+            "yemekler"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Şəhriyyə plov",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 14,
+        "category": [
+            "yemekler"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Qarabaşaq",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 10,
+        "category": [
+            "yemekler"
+        ]
+    },
+    {
+        "branchName": "Şüvəlan",
+        "productName": "Sobada tərəvəz",
+        "soldQuantity": 0,
+        "preparedQuantity": 0,
+        "unfitQuantity": 0,
+        "expiredQuantity": 0,
+        "price": 13,
+        "category": [
+            "yemekler"
+        ]
+    }
+]

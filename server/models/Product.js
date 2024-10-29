@@ -1,74 +1,80 @@
 const mongoose = require('mongoose');
 
 const productSchema = new mongoose.Schema({
-  branchName: {
-    type: String,
-    required: true,
-  },
-  productName: {
-    type: String,
-    required: true,
-  },
-  soldQuantity: {
-    type: Number,
-    required: true,
-  },
-  preparedQuantity: {
-    type: Number,
-    required: true,
-  },
-  unfitQuantity: {
-    type: Number,
-    required: true,
-  },
-  expiredQuantity: {
-    type: Number,
-    required: true,
-  },
-  stockQuantity: {
-    type: Number,
-    required: true,
-    default: 0, // Başlanğıc dəyəri 0 olacaq
-  },
-  price: {
-    type: Number,
-    required: true,
-  },
-  totalPrice: {
-    type: Number,
-    required: true,
-    default: 0,
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-  category: {
-    type: [String],
-    required: true,
-  },
+    branchName: {
+        type: String,
+        required: true,
+    },
+    productName: {
+        type: String,
+        required: true,
+    },
+    soldQuantity: {
+        type: Number,
+        default: 0, // Varsayılan değer
+    },
+    preparedQuantity: {
+        type: Number,
+        default: 0, // Varsayılan değer
+    },
+    unfitQuantity: {
+        type: Number,
+        default: 0, // Varsayılan değer
+    },
+    expiredQuantity: {
+        type: Number,
+        default: 0, // Varsayılan değer
+    },
+    stockQuantity: {
+        type: Number,
+        required: true,
+    },
+    price: {
+        type: Number,
+        required: true,
+    },
+    totalPrice: {
+        type: Number,
+        required: true,
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now,
+    },
+    category: {
+        type: [String],
+        required: true,
+    },
 });
 
-// Yeni məhsul əlavə edilərkən və ya yenilənərkən ümumi qiyməti və qalıq miqdarı hesablayır
+// Yeni məhsul əlavə edilərkən və ya yenilənərkən ümumi qiyməti ve qalıq miqdarı hesaplayıp, virgülden sonra 2 rakam kalacak şekilde yuvarlıyoruz
 productSchema.pre('save', function (next) {
-  this.totalPrice = this.soldQuantity * this.price;
-  this.stockQuantity = this.preparedQuantity - (this.soldQuantity + this.unfitQuantity + this.expiredQuantity);
-  next();
+    this.totalPrice = parseFloat((this.soldQuantity * this.price).toFixed(2));  // Toplam fiyatı 2 ondalık basamakla yuvarla
+    this.stockQuantity = parseFloat((this.preparedQuantity - (this.soldQuantity + this.unfitQuantity + this.expiredQuantity)).toFixed(2));  // Stok miktarını 2 ondalık basamakla yuvarla
+    next();
 });
 
-// Yeniləmə zamanı ümumi qiymət və qalıq miqdarını yeniləyən middleware
+// Güncellenen alanlar için hesaplamalar ve yuvarlama yapıyoruz
 productSchema.pre('findOneAndUpdate', function (next) {
-  const update = this.getUpdate();
+    const update = this.getUpdate();
 
-  if (update.soldQuantity || update.preparedQuantity || update.unfitQuantity || update.expiredQuantity || update.price) {
-    // Ümumi qiymət və qalıq miqdarı yeniləyir
-    update.totalPrice = (update.soldQuantity || 0) * (update.price || 0);
-    update.stockQuantity = (update.preparedQuantity || 0) - ((update.soldQuantity || 0) + (update.unfitQuantity || 0) + (update.expiredQuantity || 0));
-  }
+    // Güncellenen alanlar varsa hesaplamaları elle yapıyoruz ve 2 basamak yuvarlıyoruz
+    if (update.soldQuantity !== undefined || update.preparedQuantity !== undefined ||
+        update.unfitQuantity !== undefined || update.expiredQuantity !== undefined ||
+        update.price !== undefined) {
+        
+        const soldQuantity = update.soldQuantity || 0;
+        const preparedQuantity = update.preparedQuantity || 0;
+        const unfitQuantity = update.unfitQuantity || 0;
+        const expiredQuantity = update.expiredQuantity || 0;
+        const price = update.price || 0;
 
-  next();
+        update.totalPrice = parseFloat((soldQuantity * price).toFixed(2));  // Toplam fiyatı 2 ondalık basamakla yuvarla
+        update.stockQuantity = parseFloat((preparedQuantity - (soldQuantity + unfitQuantity + expiredQuantity)).toFixed(2));  // Stok miktarını 2 ondalık basamakla yuvarla
+    }
+
+    next();
 });
 
 const Product = mongoose.model('Product', productSchema);
-
 module.exports = Product;

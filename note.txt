@@ -7,21 +7,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 1.1,
-        "category": [
-            "mayalilar"
-        ]
-    },
-    {
-        "branchName": "Şüvəlan",
-        "productName": "Simit",
-        "soldQuantity": 0,
-        "preparedQuantity": 0,
-        "unfitQuantity": 0,
-        "expiredQuantity": 0,
-        "price": 1.2,
-        "category": [
-            "mayalilar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["mayalilar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -31,9 +19,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 1.2,
-        "category": [
-            "mayalilar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["mayalilar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -43,9 +31,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 1.5,
-        "category": [
-            "mayalilar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["mayalilar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -55,9 +43,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 1.3,
-        "category": [
-            "mayalilar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["mayalilar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -67,9 +55,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 1.8,
-        "category": [
-            "mayalilar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["mayalilar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -79,9 +67,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 1.8,
-        "category": [
-            "mayalilar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["mayalilar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -91,9 +79,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 15,
-        "category": [
-            "mayalilar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["mayalilar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -103,9 +91,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 1.6,
-        "category": [
-            "mayalilar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["mayalilar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -115,9 +103,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 1.1,
-        "category": [
-            "mayalilar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["mayalilar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -127,9 +115,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 1.7,
-        "category": [
-            "mayalilar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["mayalilar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -139,9 +127,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 3.5,
-        "category": [
-            "mayalilar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["mayalilar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -151,9 +139,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 2.2,
-        "category": [
-            "mayalilar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["mayalilar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -163,9 +151,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 1.4,
-        "category": [
-            "mayalilar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["mayalilar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -175,9 +163,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 1.1,
-        "category": [
-            "mayalilar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["mayalilar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -187,9 +175,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 1.3,
-        "category": [
-            "mayalilar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["mayalilar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -199,9 +187,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 1.9,
-        "category": [
-            "mayalilar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["mayalilar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -211,9 +199,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 1.3,
-        "category": [
-            "mayalilar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["mayalilar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -223,9 +211,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 1.7,
-        "category": [
-            "mayalilar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["mayalilar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -235,9 +223,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 1.2,
-        "category": [
-            "mayalilar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["mayalilar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -247,9 +235,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 1.1,
-        "category": [
-            "mayalilar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["mayalilar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -259,9 +247,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 1.3,
-        "category": [
-            "mayalilar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["mayalilar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -271,9 +259,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 1.9,
-        "category": [
-            "mayalilar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["mayalilar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -283,9 +271,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 25,
-        "category": [
-            "tortlar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["tortlar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -295,9 +283,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 23,
-        "category": [
-            "tortlar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["tortlar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -307,9 +295,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 18,
-        "category": [
-            "tortlar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["tortlar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -319,9 +307,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 27,
-        "category": [
-            "tortlar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["tortlar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -331,9 +319,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 7,
-        "category": [
-            "tortlar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["tortlar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -343,9 +331,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 3.5,
-        "category": [
-            "tortlar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["tortlar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -355,9 +343,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 4.5,
-        "category": [
-            "tortlar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["tortlar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -367,9 +355,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 2.7,
-        "category": [
-            "tortlar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["tortlar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -379,9 +367,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 18,
-        "category": [
-            "tortlar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["tortlar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -391,9 +379,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 14,
-        "category": [
-            "tortlar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["tortlar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -403,9 +391,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 24,
-        "category": [
-            "tortlar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["tortlar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -415,9 +403,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 13,
-        "category": [
-            "tortlar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["tortlar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -427,9 +415,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 9.5,
-        "category": [
-            "tortlar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["tortlar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -439,9 +427,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 3,
-        "category": [
-            "tortlar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["tortlar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -451,9 +439,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 30,
-        "category": [
-            "tortlar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["tortlar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -463,9 +451,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 25,
-        "category": [
-            "tortlar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["tortlar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -475,9 +463,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 21,
-        "category": [
-            "tortlar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["tortlar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -487,9 +475,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 21,
-        "category": [
-            "tortlar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["tortlar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -499,9 +487,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 3.5,
-        "category": [
-            "tortlar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["tortlar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -511,9 +499,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 4.5,
-        "category": [
-            "tortlar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["tortlar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -523,9 +511,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 19,
-        "category": [
-            "tortlar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["tortlar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -535,9 +523,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 22,
-        "category": [
-            "tortlar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["tortlar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -547,9 +535,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 20,
-        "category": [
-            "tortlar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["tortlar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -559,9 +547,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 14,
-        "category": [
-            "tortlar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["tortlar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -571,9 +559,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 20,
-        "category": [
-            "tortlar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["tortlar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -583,9 +571,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 15,
-        "category": [
-            "tortlar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["tortlar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -595,9 +583,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 18,
-        "category": [
-            "tortlar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["tortlar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -607,9 +595,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 12,
-        "category": [
-            "tortlar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["tortlar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -619,9 +607,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 11,
-        "category": [
-            "tortlar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["tortlar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -631,9 +619,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 20,
-        "category": [
-            "paxlavalar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["paxlavalar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -643,9 +631,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 20,
-        "category": [
-            "paxlavalar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["paxlavalar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -655,9 +643,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 20,
-        "category": [
-            "paxlavalar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["paxlavalar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -667,9 +655,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 25,
-        "category": [
-            "paxlavalar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["paxlavalar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -679,9 +667,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 15,
-        "category": [
-            "qurumallar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["qurumallar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -691,9 +679,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 20,
-        "category": [
-            "qurumallar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["qurumallar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -703,9 +691,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 1.8,
-        "category": [
-            "qurumallar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["qurumallar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -715,9 +703,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 19,
-        "category": [
-            "qurumallar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["qurumallar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -727,9 +715,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 12,
-        "category": [
-            "qurumallar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["qurumallar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -739,9 +727,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 11,
-        "category": [
-            "qurumallar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["qurumallar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -751,9 +739,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 17,
-        "category": [
-            "qurumallar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["qurumallar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -763,9 +751,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 16,
-        "category": [
-            "qurumallar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["qurumallar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -775,9 +763,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 4.8,
-        "category": [
-            "kulinariyalar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["kulinariyalar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -787,9 +775,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 4.8,
-        "category": [
-            "kulinariyalar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["kulinariyalar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -799,9 +787,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 4.9,
-        "category": [
-            "kulinariyalar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["kulinariyalar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -811,9 +799,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 7,
-        "category": [
-            "kulinariyalar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["kulinariyalar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -823,9 +811,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 3.5,
-        "category": [
-            "kulinariyalar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["kulinariyalar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -835,9 +823,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 5.2,
-        "category": [
-            "kulinariyalar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["kulinariyalar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -847,9 +835,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 1.6,
-        "category": [
-            "kulinariyalar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["kulinariyalar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -859,9 +847,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 4.8,
-        "category": [
-            "kulinariyalar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["kulinariyalar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -871,9 +859,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 1.6,
-        "category": [
-            "kulinariyalar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["kulinariyalar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -883,9 +871,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 2.3,
-        "category": [
-            "kulinariyalar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["kulinariyalar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -895,9 +883,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 4.3,
-        "category": [
-            "kulinariyalar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["kulinariyalar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -907,9 +895,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 1.8,
-        "category": [
-            "kulinariyalar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["kulinariyalar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -919,9 +907,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 1.6,
-        "category": [
-            "kulinariyalar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["kulinariyalar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -931,9 +919,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 2.5,
-        "category": [
-            "kulinariyalar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["kulinariyalar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -943,9 +931,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 23,
-        "category": [
-            "salatlar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["salatlar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -955,9 +943,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 22,
-        "category": [
-            "salatlar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["salatlar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -967,9 +955,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 22,
-        "category": [
-            "salatlar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["salatlar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -979,9 +967,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 15,
-        "category": [
-            "salatlar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["salatlar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -991,9 +979,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 20,
-        "category": [
-            "salatlar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["salatlar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -1003,9 +991,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 20,
-        "category": [
-            "salatlar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["salatlar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -1015,9 +1003,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 20,
-        "category": [
-            "salatlar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["salatlar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -1027,9 +1015,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 23,
-        "category": [
-            "salatlar"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["salatlar"]
     },
     {
         "branchName": "Şüvəlan",
@@ -1039,9 +1027,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 23,
-        "category": [
-            "yemekler"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["yemekler"]
     },
     {
         "branchName": "Şüvəlan",
@@ -1051,9 +1039,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 10,
-        "category": [
-            "yemekler"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["yemekler"]
     },
     {
         "branchName": "Şüvəlan",
@@ -1061,11 +1049,12 @@
         "soldQuantity": 0,
         "preparedQuantity": 0,
         "unfitQuantity": 0,
+       
         "expiredQuantity": 0,
         "price": 13.5,
-        "category": [
-            "yemekler"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["yemekler"]
     },
     {
         "branchName": "Şüvəlan",
@@ -1075,9 +1064,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 13,
-        "category": [
-            "yemekler"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["yemekler"]
     },
     {
         "branchName": "Şüvəlan",
@@ -1087,9 +1076,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 15,
-        "category": [
-            "yemekler"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["yemekler"]
     },
     {
         "branchName": "Şüvəlan",
@@ -1099,9 +1088,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 11.5,
-        "category": [
-            "yemekler"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["yemekler"]
     },
     {
         "branchName": "Şüvəlan",
@@ -1111,9 +1100,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 28,
-        "category": [
-            "yemekler"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["yemekler"]
     },
     {
         "branchName": "Şüvəlan",
@@ -1123,9 +1112,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 14,
-        "category": [
-            "yemekler"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["yemekler"]
     },
     {
         "branchName": "Şüvəlan",
@@ -1135,9 +1124,9 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 10,
-        "category": [
-            "yemekler"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["yemekler"]
     },
     {
         "branchName": "Şüvəlan",
@@ -1147,8 +1136,8 @@
         "unfitQuantity": 0,
         "expiredQuantity": 0,
         "price": 13,
-        "category": [
-            "yemekler"
-        ]
+        "stockQuantity": 0,
+        "totalPrice": 0,
+        "category": ["yemekler"]
     }
 ]

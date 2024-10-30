@@ -10,7 +10,7 @@ const {
 
 const router = express.Router();
 
-// Bütün məhsulları əldə etmək (Read)
+// Bütün məhsulları əldə etmək (Read) 
 router.get('/', getProducts);
 
 // Tək məhsulu əldə etmək (Read by ID)

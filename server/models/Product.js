@@ -41,36 +41,74 @@ const productSchema = new mongoose.Schema({
         type: Date,
         default: Date.now,
     },
+    salesHistory: [
+        {
+            date: {
+                type: Date,
+                default: Date.now,
+            }, 
+            soldQuantity: Number,
+            preparedQuantity: Number,
+            unfitQuantity: Number,
+            expiredQuantity: Number,
+            totalPrice: Number,
+            stockQuantity: Number,
+        } 
+    ], // Satış geçmişi, tarih ile saklanıyor
     category: {
         type: [String],
         required: true,
     },
 });
 
-// Yeni məhsul əlavə edilərkən və ya yenilənərkən ümumi qiyməti ve qalıq miqdarı hesaplayıp, virgülden sonra 2 rakam kalacak şekilde yuvarlıyoruz
+// Yeni ürün eklenirken veya güncellenirken mevcut verileri satış geçmişine ekliyoruz
 productSchema.pre('save', function (next) {
-    this.totalPrice = parseFloat((this.soldQuantity * this.price).toFixed(2));  // Toplam fiyatı 2 ondalık basamakla yuvarla
-    this.stockQuantity = parseFloat((this.preparedQuantity - (this.soldQuantity + this.unfitQuantity + this.expiredQuantity)).toFixed(2));  // Stok miktarını 2 ondalık basamakla yuvarla
+    const newSalesEntry = {
+        date: new Date(),
+        soldQuantity: this.soldQuantity,
+        preparedQuantity: this.preparedQuantity,
+        unfitQuantity: this.unfitQuantity,
+        expiredQuantity: this.expiredQuantity,
+        totalPrice: parseFloat((this.soldQuantity * this.price).toFixed(2)),
+        stockQuantity: parseFloat((this.preparedQuantity - (this.soldQuantity + this.unfitQuantity + this.expiredQuantity)).toFixed(2)),
+    };
+    
+    // Satış geçmişine ekleme yapıyoruz
+    this.salesHistory.push(newSalesEntry);
+
+    // Toplam fiyat ve stok miktarını güncel hesaplıyoruz
+    this.totalPrice = newSalesEntry.totalPrice;
+    this.stockQuantity = newSalesEntry.stockQuantity;
+
     next();
 });
 
-// Güncellenen alanlar için hesaplamalar ve yuvarlama yapıyoruz
+// Ürün güncellenirken de satış geçmişine ekleme yapıyoruz
 productSchema.pre('findOneAndUpdate', function (next) {
     const update = this.getUpdate();
 
-    // Güncellenen alanlar varsa hesaplamaları elle yapıyoruz ve 2 basamak yuvarlıyoruz
-    if (update.soldQuantity !== undefined || update.preparedQuantity !== undefined ||
-        update.unfitQuantity !== undefined || update.expiredQuantity !== undefined ||
-        update.price !== undefined) {
-        
+    if (update.soldQuantity || update.preparedQuantity || update.unfitQuantity || update.expiredQuantity || update.price) {
         const soldQuantity = update.soldQuantity || 0;
         const preparedQuantity = update.preparedQuantity || 0;
         const unfitQuantity = update.unfitQuantity || 0;
         const expiredQuantity = update.expiredQuantity || 0;
         const price = update.price || 0;
 
-        update.totalPrice = parseFloat((soldQuantity * price).toFixed(2));  // Toplam fiyatı 2 ondalık basamakla yuvarla
-        update.stockQuantity = parseFloat((preparedQuantity - (soldQuantity + unfitQuantity + expiredQuantity)).toFixed(2));  // Stok miktarını 2 ondalık basamakla yuvarla
+        const newSalesEntry = {
+            date: new Date(),
+            soldQuantity: soldQuantity,
+            preparedQuantity: preparedQuantity,
+            unfitQuantity: unfitQuantity,
+            expiredQuantity: expiredQuantity,
+            totalPrice: parseFloat((soldQuantity * price).toFixed(2)),
+            stockQuantity: parseFloat((preparedQuantity - (soldQuantity + unfitQuantity + expiredQuantity)).toFixed(2)),
+        };
+
+        // Satış geçmişine ekleme yapıyoruz
+        update.$push = { salesHistory: newSalesEntry };
+
+        update.totalPrice = newSalesEntry.totalPrice;
+        update.stockQuantity = newSalesEntry.stockQuantity;
     }
 
     next();

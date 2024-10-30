@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Table, Select, Spin, Typography, Input, Button, Form } from 'antd';
+import { Table, Select, Spin, Typography, Input, Button, Form, Modal } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts, setBranch, setCategory } from '../redux/productSlice';
 import axios from 'axios';
 
 const Option = Select.Option;
 const { Title } = Typography;
+const { Column } = Table; // Column'ı tanımlıyoruz
 
-// EditableCell bileşenini tanımlıyoruz
 const EditableCell = ({ editing, dataIndex, title, inputType, children, ...restProps }) => {
     const inputNode = <Input />;
     return (
@@ -34,6 +34,9 @@ const ProductManagement = () => {
     const [form] = Form.useForm();
     const [editingKey, setEditingKey] = useState('');
     const [data, setData] = useState([]);
+    const [isModalVisible, setIsModalVisible] = useState(false);
+    const [selectedProduct, setSelectedProduct] = useState(null);
+    const [totalPrice, setTotalPrice] = useState(0);
 
     useEffect(() => {
         dispatch(fetchProducts());
@@ -44,11 +47,11 @@ const ProductManagement = () => {
     }, [filteredProducts]);
 
     const handleBranchChange = (value) => {
-        dispatch(setBranch(value)); // Redux'a branch değerini gönder
+        dispatch(setBranch(value));
     };
 
     const handleCategoryChange = (value) => {
-        dispatch(setCategory(value)); // Redux'a kategori değerini gönder
+        dispatch(setCategory(value));
     };
 
     const isEditing = (record) => record._id === editingKey;
@@ -67,34 +70,28 @@ const ProductManagement = () => {
             const row = await form.validateFields();
             const newData = [...data];
             const index = newData.findIndex((item) => key === item._id);
-    
+
             if (index > -1) {
                 const item = newData[index];
-    
-                // Yalnızca değişen ve dolu alanları buluyoruz
+
                 const updatedItem = {};
                 for (let field in row) {
                     if (row[field] !== item[field] && row[field] !== undefined && row[field] !== null) {
                         updatedItem[field] = row[field];
                     }
                 }
-    
-                // Sadece değişen sayısal verileri dönüştürüyoruz
+
                 const patchData = {};
                 Object.keys(updatedItem).forEach(key => {
                     patchData[key] = isNaN(updatedItem[key]) ? updatedItem[key] : Number(updatedItem[key]);
                 });
-    
-                console.log("PATCH URL:", `http://localhost:5000/api/mehsullar/${key}`);
-                console.log('GÖNDERİLEN VERİ:', patchData);
-    
+
                 await axios.patch(`http://localhost:5000/api/mehsullar/${key}`, patchData, {
                     headers: {
                         'Content-Type': 'application/json',
                     }
                 })
                 .then(response => {
-                    console.log('Məhsul yeniləndi:', response.data);
                     newData.splice(index, 1, { ...item, ...response.data });
                     setData(newData);
                     setEditingKey('');
@@ -102,7 +99,6 @@ const ProductManagement = () => {
                 .catch(error => {
                     if (error.response) {
                         console.error('Sunucudan gelen hata:', error.response.data);
-                        console.error('Sunucu yanıt durumu:', error.response.status);
                     } else if (error.request) {
                         console.error('Sunucudan cevap alınamadı:', error.request);
                     } else {
@@ -114,7 +110,18 @@ const ProductManagement = () => {
             console.log('Doğrulama hatası:', errInfo);
         }
     };
-    
+
+    const openModal = (product) => {
+        setSelectedProduct(product);
+        const total = product.salesHistory.reduce((acc, sale) => acc + sale.totalPrice, 0);
+        setTotalPrice(total);
+        setIsModalVisible(true);
+    };
+
+    const handleModalClose = () => {
+        setIsModalVisible(false);
+        setSelectedProduct(null);
+    };
 
     const columns = [
         { title: 'Məhsul', dataIndex: 'productName', key: 'productName', editable: true },
@@ -144,6 +151,12 @@ const ProductManagement = () => {
                 );
             },
         },
+        {
+            title: 'Detaylar',
+            render: (text, record) => (
+                <Button onClick={() => openModal(record)}>Aç</Button>
+            )
+        },
     ];
 
     const mergedColumns = columns.map((col) => {
@@ -163,7 +176,6 @@ const ProductManagement = () => {
         };
     });
 
-    // Tablonun gösterileceği kontrol
     const shouldShowTable = selectedBranch && selectedCategory;
 
     return (
@@ -215,6 +227,35 @@ const ProductManagement = () => {
                     </Form>
                 )
             )}
+
+            <Modal
+                title="Satış Geçmişi"
+                open={isModalVisible}
+                onCancel={handleModalClose}
+                footer={null}
+            >
+                {selectedProduct && (
+                    <div>
+                        <h4>{selectedProduct.productName}</h4>
+                        <Table
+                            dataSource={selectedProduct.salesHistory}
+                            pagination={false}
+                            rowKey="_id"
+                        >
+                            <Column title="Tarix" dataIndex="date" key="date" render={(text) => new Date(text).toLocaleDateString()} />
+                            <Column title="Satış" dataIndex="soldQuantity" key="soldQuantity" />
+                            <Column title="Hazırlandı" dataIndex="preparedQuantity" key="preparedQuantity" />
+                            <Column title="Yararsız" dataIndex="unfitQuantity" key="unfitQuantity" />
+                            <Column title="Satış Müddəti Bitmiş" dataIndex="expiredQuantity" key="expiredQuantity" />
+                            <Column title="Toplam Qiymət" dataIndex="totalPrice" key="totalPrice" />
+                        </Table>
+                        <div style={{ marginTop: 20 }}>
+                            <strong>Cari Ay Üzerinden Toplam Qiymət: </strong>
+                            <span>{totalPrice.toFixed(2)} AZN</span>
+                        </div>
+                    </div>
+                )}
+            </Modal>
         </div>
     );
 };

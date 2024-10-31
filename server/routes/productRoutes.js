@@ -1,44 +1,44 @@
 const express = require('express');
-
 const {
   createProduct,
   getProducts,
   getProductById,
   updateProduct,
-  patchProduct,  
+  patchProduct,
   deleteProduct,
   getProductSalesHistory,
   deleteProductSale,
   getProductSaleById
-} = require('../controllers/productController'); 
+} = require('../controllers/productController');
+const verifyToken = require('../middleware/authMiddleware');  // Import auth middleware
 
 const router = express.Router();
 
-// Bütün məhsulları əldə etmək (Read) 
-router.get('/', getProducts);
+// Bütün məhsulları əldə etmək (Read) - Protected Route
+router.get('/', verifyToken, getProducts);
 
-// Tək məhsulu əldə etmək (Read by ID)
-router.get('/:id', getProductById);
+// Tək məhsulu əldə etmək (Read by ID) - Protected Route
+router.get('/:id', verifyToken, getProductById);
 
-// Yeni məhsul əlavə etmək (Create)
-router.post('/', createProduct);
+// Yeni məhsul əlavə etmək (Create) - Protected Route
+router.post('/', verifyToken, createProduct);
 
-// Məhsulu yeniləmək (Update)
-router.put('/:id', updateProduct);
+// Məhsulu yeniləmək (Update) - Protected Route
+router.put('/:id', verifyToken, updateProduct);
 
-// Məhsulu qismən yeniləmək (Partial Update - Patch)
-router.patch('/:id', patchProduct); // PATCH route düzgün təyin edilməlidir
+// Məhsulu qismən yeniləmək (Partial Update - Patch) - Protected Route
+router.patch('/:id', verifyToken, patchProduct);
 
-// Məhsulu silmək (Delete)
-router.delete('/:id', deleteProduct);
+// Məhsulu silmək (Delete) - Protected Route
+router.delete('/:id', verifyToken, deleteProduct);
 
-// Məhsulun satış tarixçəsini əldə etmək (Get Sales by Product ID)
-router.get('/:id/sales/', getProductSalesHistory);
+// Məhsulun satış tarixçəsini əldə etmək (Get Sales by Product ID) - Protected Route
+router.get('/:id/sales/', verifyToken, getProductSalesHistory);
 
-// Tək bir satış tarixçəsini əldə etmək (Get Specific Sale by Sale ID)
-router.get('/:id/sales/:saleId', getProductSaleById);
+// Tək bir satış tarixçəsini əldə etmək (Get Specific Sale by Sale ID) - Protected Route
+router.get('/:id/sales/:saleId', verifyToken, getProductSaleById);
 
-// Satış qeydi silmək (Delete Sales by Sale ID)
-router.delete('/:id/sales/:saleId', deleteProductSale);
+// Satış qeydi silmək (Delete Sales by Sale ID) - Protected Route
+router.delete('/:id/sales/:saleId', verifyToken, deleteProductSale);
 
 module.exports = router;

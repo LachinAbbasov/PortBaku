@@ -4,8 +4,22 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts, setBranch, setCategory } from '../redux/productSlice';
 import { EditOutlined, CheckCircleTwoTone } from '@ant-design/icons';
 import Swal from 'sweetalert2';
-import axios from 'axios';  // Axios'u unutmayın
 import "../Sass/ProductManagement.scss";
+import axios from 'axios';  // Axios'u unutmayın
+
+// Axios instance oluşturup interceptor ile token ekleme
+const axiosInstance = axios.create({
+    baseURL: 'http://localhost:5000/api',
+});
+
+axiosInstance.interceptors.request.use((config) => {
+    const token = localStorage.getItem('token');
+    if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+
+    }
+    return config;
+});
 
 const { Title } = Typography;
 const { Column } = Table;
@@ -20,6 +34,7 @@ const EditableCell = ({ editing, dataIndex, title, inputType, children, ...restP
                     name={dataIndex}
                     style={{ margin: 0 }}
                     rules={[{ required: true, message: `Please Input ${title}!` }]}
+
                 >
                     {inputNode}
                 </Form.Item>
@@ -63,7 +78,6 @@ const ProductManagement = () => {
 
     const handleMonthChange = (date, dateString) => {
         setSelectedMonth(dateString);
-
         if (dateString) {
             const monthlySalesByBranch = {};
             let totalSales = 0;
@@ -107,25 +121,21 @@ const ProductManagement = () => {
     const save = async (key) => {
         try {
             const row = await form.validateFields();
-            console.log("Gönderilen veri:", row);  // Gönderilen veriyi loglayın
+            console.log("Gönderilen veri:", row); 
     
-            // Sunucuya güncellenen veriyi gönderiyoruz
-            await axios.patch(`http://localhost:5000/api/mehsullar/${key}`, {
-                ...row,
-            });
+            await axiosInstance.patch(`/mehsullar/${key}`, { ...row });
     
-            // Verileri güncellemek için yeniden çek
             dispatch(fetchProducts());
     
-            // Düzenleme modundan çıkıp tabloda verileri sıfırla
             setEditingKey('');
-            setData([]); // Verileri sıfırlıyoruz
+            setData([]);
             
         } catch (error) {
             console.error('Hata:', error.response ? error.response.data : error.message);
             Swal.fire('Hata', error.response ? error.response.data.message : 'Bilinmeyen bir hata oluştu', 'error');
         }
     };
+    
     
     const cancel = () => {
         setEditingKey('');
@@ -155,27 +165,39 @@ const ProductManagement = () => {
         setSelectedMonth(null);
     };
 
-    // Satış Silme Fonksiyonu
     const handleDeleteSale = async (saleId) => {
         try {
-            await axios.delete(`http://localhost:5000/api/mehsullar/${selectedProduct._id}/sales/${saleId}`);
-            Swal.fire('Uğurlu', 'Satış qeydi silindi', 'success');
-            
-            // Silinen satış kaydını filteredSalesHistory'den çıkaralım
-            setFilteredSalesHistory((prev) => prev.filter((sale) => sale._id !== saleId));
+            const result = await Swal.fire({
+                title: 'Əminsiniz?',
+                text: "Bu satış qeydini silmək istədiyinizə əminsiniz?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Bəli, sil!',
+                cancelButtonText: 'Xeyr, ləğv et'
+            });
     
-            // Ürünleri yeniden fetch ediyoruz
-            dispatch(fetchProducts());
+            if (result.isConfirmed) {
+                await axiosInstance.delete(`/mehsullar/${selectedProduct._id}/sales/${saleId}`);
+    
+                Swal.fire('Uğurlu!', 'Satış qeydi silindi.', 'success');
+                
+                setFilteredSalesHistory((prev) => prev.filter((sale) => sale._id !== saleId));
+    
+                dispatch(fetchProducts());
+            }
         } catch (error) {
-            console.error('Hata:', error.response ? error.response.data : error.message);
-            Swal.fire('Hata', error.response ? error.response.data.message : 'Bilinmeyen bir hata oluştu', 'error');
+            console.error('Xəta:', error.response ? error.response.data : error.message);
+            Swal.fire('Xəta', error.response ? error.response.data.message : 'Naməlum bir xəta baş verdi', 'error');
         }
     };
     
-    
 
     const columns = [
-        { title: 'Məhsul', dataIndex: 'productName', key: 'productName', editable: false },
+        { title: 'Məhsul', dataIndex: 'productName', key: 'productName', editable: false, render: (text, record) => (
+            <span>{text} {newlyAddedProducts.includes(record._id) && <CheckCircleTwoTone twoToneColor="#52c41a" />}</span>
+        )},
         { title: 'Satış', dataIndex: 'soldQuantity', key: 'soldQuantity', editable: true },
         { title: 'Hazırlandı', dataIndex: 'preparedQuantity', key: 'preparedQuantity', editable: true },
         { title: 'Yararsız', dataIndex: 'unfitQuantity', key: 'unfitQuantity', editable: true },
@@ -190,9 +212,7 @@ const ProductManagement = () => {
                 const editable = isEditing(record);
                 return editable ? (
                     <span>
-                        <Button onClick={() => save(record._id)} style={{ marginRight: 8 }}>
-                            Save
-                        </Button>
+                        <Button onClick={() => save(record._id)} style={{ marginRight: 8 }}>Save</Button>
                         <Button onClick={cancel}>Cancel</Button>
                     </span>
                 ) : (
@@ -206,9 +226,7 @@ const ProductManagement = () => {
             title: 'Detallar',
             dataIndex: 'details',
             render: (_, record) => (
-                <Button onClick={() => openModal(record)}>
-                    Detallar
-                </Button>
+                <Button onClick={() => openModal(record)}>Detallar</Button>
             ),
         },
     ];
@@ -260,9 +278,7 @@ const ProductManagement = () => {
                         value={selectedBranch}
                     >
                         {branches.map((branch) => (
-                            <Select.Option key={branch} value={branch}>
-                                {branch}
-                            </Select.Option>
+                            <Select.Option key={branch} value={branch}>{branch}</Select.Option>
                         ))}
                     </Select>
                 </Col>
@@ -274,9 +290,7 @@ const ProductManagement = () => {
                         value={selectedCategory}
                     >
                         {categories.map((category) => (
-                            <Select.Option key={category} value={category}>
-                                {category}
-                            </Select.Option>
+                            <Select.Option key={category} value={category}>{category}</Select.Option>
                         ))}
                     </Select>
                 </Col>
@@ -339,12 +353,7 @@ const ProductManagement = () => {
                                 title="Sil"
                                 key="delete"
                                 render={(_, record) => (
-                                    <Button
-                                        type="danger"
-                                        onClick={() => handleDeleteSale(record._id)}
-                                    >
-                                        Sil
-                                    </Button>
+                                    <Button type="danger" onClick={() => handleDeleteSale(record._id)}>Sil</Button>
                                 )}
                             />
                         </Table>

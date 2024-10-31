@@ -1,16 +1,30 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+// Axios ile yapılan her istekte Authorization header'ı eklemek için bir instance oluşturuyoruz
+const axiosInstance = axios.create({
+  baseURL: 'http://localhost:5000/api',  // API base url
+});
+
+// Axios interceptor ile token'ı her isteğe ekliyoruz
+axiosInstance.interceptors.request.use((config) => {
+  const token = localStorage.getItem('token');  // Token'ı localStorage'dan alıyoruz
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;  // Eğer token varsa Authorization header'a ekliyoruz
+  }
+  return config;
+});
+
 // Async thunk to fetch products
 export const fetchProducts = createAsyncThunk('product/fetchProducts', async () => {
-  const response = await axios.get('http://localhost:5000/api/mehsullar');
+  const response = await axiosInstance.get('/mehsullar');  // Yetkilendirilmiş GET isteği
   return response.data;
 });
 
 // Async thunk to update a product
 export const updateProduct = createAsyncThunk('product/updateProduct', async (updatedProduct) => {
   const { _id, ...updates } = updatedProduct;
-  const response = await axios.patch(`http://localhost:5000/api/mehsullar/${_id}`, updates);
+  const response = await axiosInstance.patch(`/mehsullar/${_id}`, updates);  // Yetkilendirilmiş PATCH isteği
   return response.data;
 });
 

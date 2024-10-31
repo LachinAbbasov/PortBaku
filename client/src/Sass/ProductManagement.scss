@@ -1,15 +1,175 @@
-// ProductManagement.scss
+// Bakery-style color and font variables
+$background-color: #f9f4ef;
+$primary-color: #ff8c42; // Pastel orange
+$secondary-color: #d2691e; // Rich brown
+$highlight-color: #52c41a; // Success color for icons
+$border-radius: 12px;
+$font-family: 'Poppins', sans-serif;
+$input-bg: #fff6e0; // Light cream background
+$input-border: #e1d5c7;
+$header-bg: #f0e1d2; // Light tan for headers
+$modal-bg: white;
 
-.ant-modal-title {
-    font-size: 1.5rem; // Başlık boyutunu ayarlayın
-}
+.product-management {
+  padding: 20px;
+  background-color: $background-color;
+  font-family: $font-family;
 
-.ant-table {
-    width: 100%; // Tablonun genişliğini ayarlayın
-}
+  .title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: $secondary-color;
+    text-align: center;
+  }
 
-@media (max-width: 768px) {
-    .ant-select {
-        width: 100%; // Mobil görünümde seçim kutularının genişliğini ayarlayın
+  .summary-section {
+    background-color: $header-bg;
+    padding: 16px;
+    border-radius: $border-radius;
+    font-size: 18px;
+    margin-bottom: 20px;
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+
+      li {
+        margin-bottom: 8px;
+        color: $secondary-color;
+        font-weight: 600;
+      }
     }
+  }
+
+  .select-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 20px;
+
+    .ant-select, .ant-picker {
+      background-color: $input-bg;
+      border-color: $input-border;
+      border-radius: $border-radius;
+      width: 100%;
+
+      @media (min-width: 768px) {
+        width: calc(33.333% - 16px); // 3 equal columns on larger screens
+      }
+    }
+  }
+
+  .ant-table-wrapper {
+    border-radius: $border-radius;
+    overflow: hidden;
+    background-color: $modal-bg;
+
+    .ant-table-thead > tr > th {
+      background-color: $header-bg;
+      font-weight: bold;
+      color: $secondary-color;
+      border-bottom: 1px solid $input-border;
+    }
+
+    .ant-table-cell {
+      padding: 12px;
+      font-size: 14px;
+    }
+
+    .editable-row input {
+      width: 100%;
+      background-color: $input-bg;
+      border: 1px solid $input-border;
+      padding: 8px;
+      border-radius: $border-radius;
+
+      &:focus {
+        border-color: $primary-color;
+        box-shadow: 0 0 5px rgba(255, 140, 66, 0.4);
+      }
+    }
+
+    @media (max-width: 768px) {
+      table {
+        font-size: 12px; // Smaller text on mobile devices
+      }
+
+      .ant-table-cell {
+        padding: 8px; // Reduce cell padding for small screens
+      }
+    }
+
+    @media (min-width: 769px) {
+      .editable-row input {
+        width: auto;
+      }
+    }
+  }
+
+  .ant-modal {
+    background-color: $modal-bg;
+    border-radius: $border-radius;
+    padding: 20px;
+
+    @media (max-width: 768px) {
+      width: 90% !important; // Full width for modal on mobile
+    }
+
+    @media (min-width: 769px) {
+      width: 800px !important;
+    }
+
+    h4 {
+      text-align: center;
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: $secondary-color;
+    }
+
+    .ant-picker {
+      width: 100%;
+      border-radius: $border-radius;
+    }
+
+    .ant-table {
+      margin-top: 20px;
+    }
+  }
+
+  .ant-tooltip {
+    .ant-tooltip-inner {
+      background-color: $primary-color;
+      color: white;
+      font-size: 12px;
+    }
+  }
+
+  .ant-btn {
+    background-color: $primary-color;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    font-weight: 600;
+    border-radius: $border-radius;
+    cursor: pointer;
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+
+    &.ant-btn-danger {
+      background-color: #e74c3c;
+
+      &:hover {
+        background-color: darken(#e74c3c, 10%);
+      }
+    }
+  }
+
+  .ant-spin {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+  }
 }

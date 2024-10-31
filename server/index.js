@@ -11,11 +11,15 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
+
 // MongoDB Bağlantısı
 mongoose.connect(process.env.MONGODB_URI, {})
   .then(() => console.log('MongoDB-ə uğurla qoşuldu'))
-  .catch(err => console.error('MongoDB-ə qoşularkən xəta:', err));
-
+  .catch(err => {
+    console.error('MongoDB-ə qoşularkən xəta:', err);
+    process.exit(1);  // Sunucuyu durdurun eğer bağlantı başarısızsa
+  });
+  
 // Product marşrutlarını yönləndir
 app.use('/api/mehsullar', productRoutes);
 

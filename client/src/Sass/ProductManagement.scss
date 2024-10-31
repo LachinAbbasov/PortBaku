@@ -1,0 +1,15 @@
+// ProductManagement.scss
+
+.ant-modal-title {
+    font-size: 1.5rem; // Başlık boyutunu ayarlayın
+}
+
+.ant-table {
+    width: 100%; // Tablonun genişliğini ayarlayın
+}
+
+@media (max-width: 768px) {
+    .ant-select {
+        width: 100%; // Mobil görünümde seçim kutularının genişliğini ayarlayın
+    }
+}

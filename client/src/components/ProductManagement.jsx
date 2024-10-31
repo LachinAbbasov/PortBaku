@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { Table, Select, Spin, Typography, Input, Button, Form, Modal } from 'antd';
+import { Table, Select, Spin, Typography, Button, Form, Modal, Row, Col, DatePicker, Tooltip } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts, setBranch, setCategory } from '../redux/productSlice';
-import axios from 'axios';
+import { EditOutlined, CheckCircleTwoTone } from '@ant-design/icons';
+import Swal from 'sweetalert2';
+import axios from 'axios';  // Axios'u unutmayın
+import "../Sass/ProductManagement.scss";
 
-const Option = Select.Option;
 const { Title } = Typography;
-const { Column } = Table; // Column'ı tanımlıyoruz
+const { Column } = Table;
+const { MonthPicker } = DatePicker;
 
 const EditableCell = ({ editing, dataIndex, title, inputType, children, ...restProps }) => {
-    const inputNode = <Input />;
+    const inputNode = <input />;
     return (
         <td {...restProps}>
             {editing ? (
@@ -32,11 +35,15 @@ const ProductManagement = () => {
     const { filteredProducts, status, branches, categories, selectedBranch, selectedCategory } = useSelector((state) => state.product);
 
     const [form] = Form.useForm();
-    const [editingKey, setEditingKey] = useState('');
     const [data, setData] = useState([]);
     const [isModalVisible, setIsModalVisible] = useState(false);
+    const [editingKey, setEditingKey] = useState('');
     const [selectedProduct, setSelectedProduct] = useState(null);
-    const [totalPrice, setTotalPrice] = useState(0);
+    const [branchMonthlySales, setBranchMonthlySales] = useState({});
+    const [selectedMonth, setSelectedMonth] = useState(null);
+    const [totalBranchSales, setTotalBranchSales] = useState(0);
+    const [filteredSalesHistory, setFilteredSalesHistory] = useState([]);
+    const [newlyAddedProducts, setNewlyAddedProducts] = useState([]);
 
     useEffect(() => {
         dispatch(fetchProducts());
@@ -54,77 +61,121 @@ const ProductManagement = () => {
         dispatch(setCategory(value));
     };
 
+    const handleMonthChange = (date, dateString) => {
+        setSelectedMonth(dateString);
+
+        if (dateString) {
+            const monthlySalesByBranch = {};
+            let totalSales = 0;
+
+            filteredProducts.forEach(product => {
+                const filteredSales = product.salesHistory.filter(sale => {
+                    const saleDate = new Date(sale.date);
+                    return saleDate.getFullYear() === new Date(dateString).getFullYear() &&
+                        saleDate.getMonth() === new Date(dateString).getMonth();
+                });
+
+                const branchTotal = filteredSales.reduce((acc, sale) => acc + sale.totalPrice, 0);
+                totalSales += branchTotal;
+
+                if (monthlySalesByBranch[product.branchName]) {
+                    monthlySalesByBranch[product.branchName] += branchTotal;
+                } else {
+                    monthlySalesByBranch[product.branchName] = branchTotal;
+                }
+            });
+
+            setBranchMonthlySales(monthlySalesByBranch);
+            setTotalBranchSales(totalSales);
+        }
+    };
+
     const isEditing = (record) => record._id === editingKey;
 
     const edit = (record) => {
-        form.setFieldsValue({ ...record });
+        form.setFieldsValue({
+            soldQuantity: '',
+            preparedQuantity: '',
+            unfitQuantity: '',
+            expiredQuantity: '',
+            totalPrice: '',
+            ...record,
+        });
         setEditingKey(record._id);
-    };
-
-    const cancel = () => {
-        setEditingKey('');
     };
 
     const save = async (key) => {
         try {
             const row = await form.validateFields();
-            const newData = [...data];
-            const index = newData.findIndex((item) => key === item._id);
-
-            if (index > -1) {
-                const item = newData[index];
-
-                const updatedItem = {};
-                for (let field in row) {
-                    if (row[field] !== item[field] && row[field] !== undefined && row[field] !== null) {
-                        updatedItem[field] = row[field];
-                    }
-                }
-
-                const patchData = {};
-                Object.keys(updatedItem).forEach(key => {
-                    patchData[key] = isNaN(updatedItem[key]) ? updatedItem[key] : Number(updatedItem[key]);
-                });
-
-                await axios.patch(`http://localhost:5000/api/mehsullar/${key}`, patchData, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                    }
-                })
-                .then(response => {
-                    newData.splice(index, 1, { ...item, ...response.data });
-                    setData(newData);
-                    setEditingKey('');
-                })
-                .catch(error => {
-                    if (error.response) {
-                        console.error('Sunucudan gelen hata:', error.response.data);
-                    } else if (error.request) {
-                        console.error('Sunucudan cevap alınamadı:', error.request);
-                    } else {
-                        console.error('İstek oluşturulurken hata:', error.message);
-                    }
-                });
-            }
-        } catch (errInfo) {
-            console.log('Doğrulama hatası:', errInfo);
+            console.log("Gönderilen veri:", row);  // Gönderilen veriyi loglayın
+    
+            // Sunucuya güncellenen veriyi gönderiyoruz
+            await axios.patch(`http://localhost:5000/api/mehsullar/${key}`, {
+                ...row,
+            });
+    
+            // Verileri güncellemek için yeniden çek
+            dispatch(fetchProducts());
+    
+            // Düzenleme modundan çıkıp tabloda verileri sıfırla
+            setEditingKey('');
+            setData([]); // Verileri sıfırlıyoruz
+            
+        } catch (error) {
+            console.error('Hata:', error.response ? error.response.data : error.message);
+            Swal.fire('Hata', error.response ? error.response.data.message : 'Bilinmeyen bir hata oluştu', 'error');
         }
+    };
+    
+    const cancel = () => {
+        setEditingKey('');
     };
 
     const openModal = (product) => {
         setSelectedProduct(product);
-        const total = product.salesHistory.reduce((acc, sale) => acc + sale.totalPrice, 0);
-        setTotalPrice(total);
         setIsModalVisible(true);
+        setFilteredSalesHistory(product.salesHistory);
+    };
+
+    const handleModalMonthChange = (date, dateString) => {
+        if (selectedProduct && dateString) {
+            const filteredSales = selectedProduct.salesHistory.filter(sale => {
+                const saleDate = new Date(sale.date);
+                return saleDate.getFullYear() === new Date(dateString).getFullYear() &&
+                    saleDate.getMonth() === new Date(dateString).getMonth();
+            });
+            setFilteredSalesHistory(filteredSales);
+        }
     };
 
     const handleModalClose = () => {
         setIsModalVisible(false);
         setSelectedProduct(null);
+        setFilteredSalesHistory([]);
+        setSelectedMonth(null);
     };
 
+    // Satış Silme Fonksiyonu
+    const handleDeleteSale = async (saleId) => {
+        try {
+            await axios.delete(`http://localhost:5000/api/mehsullar/${selectedProduct._id}/sales/${saleId}`);
+            Swal.fire('Uğurlu', 'Satış qeydi silindi', 'success');
+            
+            // Silinen satış kaydını filteredSalesHistory'den çıkaralım
+            setFilteredSalesHistory((prev) => prev.filter((sale) => sale._id !== saleId));
+    
+            // Ürünleri yeniden fetch ediyoruz
+            dispatch(fetchProducts());
+        } catch (error) {
+            console.error('Hata:', error.response ? error.response.data : error.message);
+            Swal.fire('Hata', error.response ? error.response.data.message : 'Bilinmeyen bir hata oluştu', 'error');
+        }
+    };
+    
+    
+
     const columns = [
-        { title: 'Məhsul', dataIndex: 'productName', key: 'productName', editable: true },
+        { title: 'Məhsul', dataIndex: 'productName', key: 'productName', editable: false },
         { title: 'Satış', dataIndex: 'soldQuantity', key: 'soldQuantity', editable: true },
         { title: 'Hazırlandı', dataIndex: 'preparedQuantity', key: 'preparedQuantity', editable: true },
         { title: 'Yararsız', dataIndex: 'unfitQuantity', key: 'unfitQuantity', editable: true },
@@ -133,7 +184,7 @@ const ProductManagement = () => {
         { title: 'Qiyməti', dataIndex: 'price', key: 'price', editable: true },
         { title: 'Satış Məbləği', dataIndex: 'totalPrice', key: 'totalPrice', editable: false },
         {
-            title: 'Edit',
+            title: 'Əməliyyat',
             dataIndex: 'operation',
             render: (_, record) => {
                 const editable = isEditing(record);
@@ -145,17 +196,20 @@ const ProductManagement = () => {
                         <Button onClick={cancel}>Cancel</Button>
                     </span>
                 ) : (
-                    <Button disabled={editingKey !== ''} onClick={() => edit(record)}>
-                        Edit
-                    </Button>
+                    <Tooltip title="Yeni satış məlumatı əlavə et">
+                        <Button icon={<EditOutlined />} disabled={editingKey !== ''} onClick={() => edit(record)} />
+                    </Tooltip>
                 );
             },
         },
         {
-            title: 'Detaylar',
-            render: (text, record) => (
-                <Button onClick={() => openModal(record)}>Aç</Button>
-            )
+            title: 'Detallar',
+            dataIndex: 'details',
+            render: (_, record) => (
+                <Button onClick={() => openModal(record)}>
+                    Detallar
+                </Button>
+            ),
         },
     ];
 
@@ -179,32 +233,61 @@ const ProductManagement = () => {
     const shouldShowTable = selectedBranch && selectedCategory;
 
     return (
-        <div>
-            <Title level={2}>Product Management</Title>
-            <Select
-                style={{ width: 200, marginRight: 10 }}
-                placeholder="Select Branch"
-                onChange={handleBranchChange}
-                value={selectedBranch}
-            >
-                {branches.map((branch) => (
-                    <Option key={branch} value={branch}>
-                        {branch}
-                    </Option>
-                ))}
-            </Select>
-            <Select
-                style={{ width: 200 }}
-                placeholder="Select Category"
-                onChange={handleCategoryChange}
-                value={selectedCategory}
-            >
-                {categories.map((category) => (
-                    <Option key={category} value={category}>
-                        {category}
-                    </Option>
-                ))}
-            </Select>
+        <div style={{ padding: '20px' }}>
+            <Title level={2}>Məhsul İdarəsi</Title>
+
+            <div style={{ marginBottom: '20px', fontWeight: 'bold', fontSize: '18px' }}>
+                Seçilən Ay üzrə Filialların Satışları:
+                <ul>
+                    {Object.keys(branchMonthlySales).map(branch => (
+                        <li key={branch}>
+                            {branch}: {branchMonthlySales[branch].toFixed(2)} AZN
+                        </li>
+                    ))}
+                </ul>
+            </div>
+
+            <div style={{ marginBottom: '20px', fontWeight: 'bold', fontSize: '18px' }}>
+                Ümumi Satış Məbləği: {totalBranchSales.toFixed(2)} AZN
+            </div>
+
+            <Row gutter={16}>
+                <Col xs={24} sm={12} md={8}>
+                    <Select
+                        style={{ width: '100%', marginBottom: 16 }}
+                        placeholder="Şöbə Seçin"
+                        onChange={handleBranchChange}
+                        value={selectedBranch}
+                    >
+                        {branches.map((branch) => (
+                            <Select.Option key={branch} value={branch}>
+                                {branch}
+                            </Select.Option>
+                        ))}
+                    </Select>
+                </Col>
+                <Col xs={24} sm={12} md={8}>
+                    <Select
+                        style={{ width: '100%' }}
+                        placeholder="Kateqoriya Seçin"
+                        onChange={handleCategoryChange}
+                        value={selectedCategory}
+                    >
+                        {categories.map((category) => (
+                            <Select.Option key={category} value={category}>
+                                {category}
+                            </Select.Option>
+                        ))}
+                    </Select>
+                </Col>
+                <Col xs={24} sm={12} md={8}>
+                    <MonthPicker
+                        style={{ width: '100%', marginBottom: 16 }}
+                        placeholder="Ay seçin"
+                        onChange={handleMonthChange}
+                    />
+                </Col>
+            </Row>
 
             {status === 'loading' ? (
                 <Spin size="large" />
@@ -212,11 +295,7 @@ const ProductManagement = () => {
                 shouldShowTable && (
                     <Form form={form} component={false}>
                         <Table
-                            components={{
-                                body: {
-                                    cell: EditableCell,
-                                },
-                            }}
+                            components={{ body: { cell: EditableCell } }}
                             bordered
                             dataSource={data}
                             columns={mergedColumns}
@@ -233,14 +312,22 @@ const ProductManagement = () => {
                 open={isModalVisible}
                 onCancel={handleModalClose}
                 footer={null}
+                width={800}
             >
                 {selectedProduct && (
                     <div>
-                        <h4>{selectedProduct.productName}</h4>
+                        <h4 style={{ textAlign: 'center', marginBottom: '20px' }}>{selectedProduct.productName}</h4>
+                        <DatePicker
+                            picker="month"
+                            style={{ marginBottom: 16 }}
+                            onChange={handleModalMonthChange}
+                            placeholder="Ayı seçin"
+                        />
                         <Table
-                            dataSource={selectedProduct.salesHistory}
+                            dataSource={filteredSalesHistory}
                             pagination={false}
                             rowKey="_id"
+                            bordered
                         >
                             <Column title="Tarix" dataIndex="date" key="date" render={(text) => new Date(text).toLocaleDateString()} />
                             <Column title="Satış" dataIndex="soldQuantity" key="soldQuantity" />
@@ -248,11 +335,19 @@ const ProductManagement = () => {
                             <Column title="Yararsız" dataIndex="unfitQuantity" key="unfitQuantity" />
                             <Column title="Satış Müddəti Bitmiş" dataIndex="expiredQuantity" key="expiredQuantity" />
                             <Column title="Toplam Qiymət" dataIndex="totalPrice" key="totalPrice" />
+                            <Column
+                                title="Sil"
+                                key="delete"
+                                render={(_, record) => (
+                                    <Button
+                                        type="danger"
+                                        onClick={() => handleDeleteSale(record._id)}
+                                    >
+                                        Sil
+                                    </Button>
+                                )}
+                            />
                         </Table>
-                        <div style={{ marginTop: 20 }}>
-                            <strong>Cari Ay Üzerinden Toplam Qiymət: </strong>
-                            <span>{totalPrice.toFixed(2)} AZN</span>
-                        </div>
                     </div>
                 )}
             </Modal>

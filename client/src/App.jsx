@@ -5,15 +5,20 @@ import Dashboard from './components/DashBoard';
 import Login from './components/Login';
 import ProtectedRoute from './routes/ProtectedRoute';
 import ErrorBoundary from './error/ErrorBoundary';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
 function App() {
-  const isAuthenticated = localStorage.getItem('token'); // Kullanıcı oturumu
+  const isAuthenticated = localStorage.getItem('token'); // Kullanıcı oturum durumu
 
   return (
     <ErrorBoundary>
       <Router>
+
+        <Navbar /> 
+
         <Routes>
-          {/* Root "/" path, giriş yapılmışsa ProductManagement'a yönlendirme yap */}
+       
           <Route
             path="/"
             element={
@@ -40,6 +45,7 @@ function App() {
             element={<ProtectedRoute component={Dashboard} />}
           />
         </Routes>
+        <Footer />
       </Router>
     </ErrorBoundary>
   );

@@ -1,0 +1,71 @@
+// Renk ve Stil Değişkenleri
+$primary-color: #4a90e2;
+$background-color: #f9f9f9;
+$card-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+$card-hover-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+$text-color: #333;
+
+// Dashboard Genel Stil
+.dashboard-container {
+  padding: 20px;
+  background-color: $background-color;
+  min-height: 100vh;
+}
+
+// Başlıklar için stil
+h1, h2, h3 {
+  color: $primary-color;
+  margin-bottom: 15px;
+}
+
+// Quick Stats bölümünün stili
+.quick-stats {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: $card-shadow;
+  margin-bottom: 20px;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    
+    li {
+      color: $text-color;
+      font-size: 1rem;
+      margin: 5px 0;
+    }
+  }
+}
+
+// Kartların genel düzeni
+.products {
+  margin-top: 20px;
+
+  .ant-card {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: $card-shadow;
+    transition: box-shadow 0.3s ease;
+
+    &:hover {
+      box-shadow: $card-hover-shadow;
+    }
+
+    .ant-card-cover img {
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .ant-card-meta-title {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: $text-color;
+    }
+
+    .ant-card-meta-description {
+      font-size: 1rem;
+      color: darken($text-color, 20%);
+    }
+  }
+}

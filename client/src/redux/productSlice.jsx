@@ -1,30 +1,35 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-// Axios ile yapılan her istekte Authorization header'ı eklemek için bir instance oluşturuyoruz
+// Axios instance oluşturma ve interceptor ile Authorization header ekleme
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:5000/api',  // API base url
+  baseURL: 'http://localhost:5000/api',
 });
 
-// Axios interceptor ile token'ı her isteğe ekliyoruz
 axiosInstance.interceptors.request.use((config) => {
-  const token = localStorage.getItem('token');  // Token'ı localStorage'dan alıyoruz
+  const token = localStorage.getItem('token');
   if (token) {
-    config.headers.Authorization = `Bearer ${token}`;  // Eğer token varsa Authorization header'a ekliyoruz
+    config.headers.Authorization = `Bearer ${token}`;
   }
   return config;
 });
 
-// Async thunk to fetch products
+// Tüm ürünleri çekme
 export const fetchProducts = createAsyncThunk('product/fetchProducts', async () => {
-  const response = await axiosInstance.get('/mehsullar');  // Yetkilendirilmiş GET isteği
+  const response = await axiosInstance.get('/mehsullar');
   return response.data;
 });
 
-// Async thunk to update a product
+// Kategoriye göre ürünleri çekme
+export const fetchProductsByCategory = createAsyncThunk('product/fetchProductsByCategory', async (category) => {
+  const response = await axiosInstance.get(`/mehsullar?category=${category}`);
+  return response.data;
+});
+
+// Ürünü güncelleme
 export const updateProduct = createAsyncThunk('product/updateProduct', async (updatedProduct) => {
   const { _id, ...updates } = updatedProduct;
-  const response = await axiosInstance.patch(`/mehsullar/${_id}`, updates);  // Yetkilendirilmiş PATCH isteği
+  const response = await axiosInstance.patch(`/mehsullar/${_id}`, updates);
   return response.data;
 });
 
@@ -34,11 +39,11 @@ const productSlice = createSlice({
     products: [],
     status: 'idle',
     error: null,
-    branches: [],  // Filtre için branch
-    categories: [],  // Filtre için kategori
-    selectedBranch: '',  // Seçilen branch
-    selectedCategory: '',  // Seçilen kategori
-    filteredProducts: [],  // Filtrelenmiş ürünler
+    branches: [],
+    categories: [],
+    selectedBranch: '',
+    selectedCategory: '',
+    filteredProducts: [],
   },
   reducers: {
     setBranch(state, action) {
@@ -67,23 +72,33 @@ const productSlice = createSlice({
         state.status = 'succeeded';
         state.products = action.payload;
 
-        // Branch ve Kategori set et
+        // Şubeleri ve kategorileri ayarlayın
         const uniqueBranches = [...new Set(action.payload.map((product) => product.branchName))];
         const uniqueCategories = [...new Set(action.payload.flatMap((product) => product.category))];
         state.branches = uniqueBranches;
         state.categories = uniqueCategories;
-        state.filteredProducts = action.payload;  // İlk başta tüm ürünler
+        state.filteredProducts = action.payload;
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error.message;
       })
+      .addCase(fetchProductsByCategory.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(fetchProductsByCategory.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.filteredProducts = action.payload; // Sadece seçilen kategorinin ürünlerini göster
+      })
+      .addCase(fetchProductsByCategory.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
+      })
       .addCase(updateProduct.fulfilled, (state, action) => {
-        // Güncellenmiş ürünü state'teki ürünler listesinde bul ve güncelle
         const index = state.products.findIndex((product) => product._id === action.payload._id);
         if (index !== -1) {
           state.products[index] = action.payload;
-          productSlice.caseReducers.filterProducts(state); // Filtreleri yeniden uygula
+          productSlice.caseReducers.filterProducts(state);
         }
       })
       .addCase(updateProduct.rejected, (state, action) => {

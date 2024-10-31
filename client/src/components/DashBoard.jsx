@@ -1,22 +1,63 @@
 import React from 'react';
+import { Card, Row, Col, Typography } from 'antd';
+import '../Sass/DashBoard.scss'
+
+const { Title, Text } = Typography;
+
+const products = [
+  { id: 1, name: 'Chocolate Cake', price: '10₼', img: '../../../imag4/' },
+  { id: 2, name: 'Croissant', price: '2₼', img: '/images/croissant.jpg' },
+  { id: 3, name: 'Bagel', price: '1.5₼', img: '/images/bagel.jpg' },
+  { id: 4, name: 'Muffin', price: '3₼', img: '/images/muffin.jpg' },
+  { id: 5, name: 'Bread Loaf', price: '4₼', img: '/images/bread.jpg' },
+  { id: 6, name: 'Danish Pastry', price: '5₼', img: '/images/danish.jpg' },
+  { id: 6, name: 'Danish Pastry', price: '5₼', img: '/images/danish.jpg' },
+  { id: 6, name: 'Danish Pastry', price: '5₼', img: '/images/danish.jpg' },
+  { id: 6, name: 'Danish Pastry', price: '5₼', img: '/images/danish.jpg' },
+  { id: 6, name: 'Danish Pastry', price: '5₼', img: '/images/danish.jpg' },
+  { id: 6, name: 'Danish Pastry', price: '5₼', img: '/images/danish.jpg' },
+  { id: 6, name: 'Danish Pastry', price: '5₼', img: '/images/danish.jpg' },
+  { id: 6, name: 'Danish Pastry', price: '5₼', img: '/images/danish.jpg' },
+  { id: 6, name: 'Danish Pastry', price: '5₼', img: '/images/danish.jpg' },
+  { id: 6, name: 'Danish Pastry', price: '5₼', img: '/images/danish.jpg' },
+  { id: 6, name: 'Danish Pastry', price: '5₼', img: '/images/danish.jpg' },
+  { id: 6, name: 'Danish Pastry', price: '5₼', img: '/images/danish.jpg' },
+  { id: 6, name: 'Danish Pastry', price: '5₼', img: '/images/danish.jpg' },
+  { id: 6, name: 'Danish Pastry', price: '5₼', img: '/images/danish.jpg' },
+  { id: 6, name: 'Danish Pastry', price: '5₼', img: '/images/danish.jpg' },
+  { id: 6, name: 'Danish Pastry', price: '5₼', img: '/images/danish.jpg' },
+  { id: 6, name: 'Danish Pastry', price: '5₼', img: '/images/danish.jpg' },
+  { id: 6, name: 'Danish Pastry', price: '5₼', img: '/images/danish.jpg' },
+  { id: 6, name: 'Danish Pastry', price: '5₼', img: '/images/danish.jpg' },
+  { id: 6, name: 'Danish Pastry', price: '5₼', img: '/images/danish.jpg' },
+  { id: 6, name: 'Danish Pastry', price: '5₼', img: '/images/danish.jpg' },
+  { id: 6, name: 'Danish Pastry', price: '5₼', img: '/images/danish.jpg' },
+  { id: 6, name: 'Danish Pastry', price: '5₼', img: '/images/danish.jpg' },
+];
 
 const Dashboard = () => {
   return (
     <div style={{ padding: '20px' }}>
-      <h1>Dashboard</h1>
-      <div>
-        <h2>Welcome, User!</h2>
-        <p>This is your dashboard. Here you can see a quick overview of your activities.</p>
-        <div>
-          <h3>Quick Stats</h3>
-          <ul>
-            <li>Total Users: 150</li>
-            <li>Active Sessions: 5</li>
-            <li>Pending Tasks: 3</li>
-          </ul>
-        </div>
-      </div>
+
+
+
+      {/* Product Cards */}
+      <Title level={3}>Məhsullarımız</Title>
+      <Row gutter={[16, 16]}>
+        {products.map((product) => (
+          <Col xs={24} sm={12} md={8} lg={6} key={product.id}>
+            <Card
+              hoverable
+              cover={<img alt={product.name} src={product.img} />}
+              style={{ borderRadius: '10px', overflow: 'hidden' }}
+            >
+              <Card.Meta title={product.name} description={<Text strong>{product.price}</Text>} />
+            </Card>
+          </Col>
+        ))}
+      </Row>
     </div>
+
   );
 };
 

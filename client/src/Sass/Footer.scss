@@ -1,0 +1,33 @@
+.footer {
+    background-color: #001529;
+    color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+  
+    .ant-typography {
+      color: #d9d9d9;
+  
+      &.strong {
+        color: #fff;
+      }
+  
+      a {
+        color: #4a90e2;
+  
+        &:hover {
+          color: #40a9ff;
+        }
+      }
+    }
+  
+    .anticon {
+      font-size: 1.2rem;
+      color: #d9d9d9;
+      transition: color 0.3s;
+  
+      &:hover {
+        color: #1890ff;
+      }
+    }
+  }
+  

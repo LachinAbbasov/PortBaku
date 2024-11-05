@@ -195,16 +195,65 @@ const ProductManagement = () => {
     
 
     const columns = [
-        { title: 'Məhsul', dataIndex: 'productName', key: 'productName', editable: false, render: (text, record) => (
-            <span>{text} {newlyAddedProducts.includes(record._id) && <CheckCircleTwoTone twoToneColor="#52c41a" />}</span>
-        )},
-        { title: 'Satış', dataIndex: 'soldQuantity', key: 'soldQuantity', editable: true },
-        { title: 'Hazırlandı', dataIndex: 'preparedQuantity', key: 'preparedQuantity', editable: true },
-        { title: 'Yararsız', dataIndex: 'unfitQuantity', key: 'unfitQuantity', editable: true },
-        { title: 'Satış Müddəti Bitmiş', dataIndex: 'expiredQuantity', key: 'expiredQuantity', editable: true },
-        { title: 'Stokda', dataIndex: 'stockQuantity', key: 'stockQuantity', editable: false },
-        { title: 'Qiyməti', dataIndex: 'price', key: 'price', editable: true },
-        { title: 'Satış Məbləği', dataIndex: 'totalPrice', key: 'totalPrice', editable: false },
+        {
+            title: 'Məhsul',
+            dataIndex: 'productName',
+            key: 'productName',
+            editable: false,
+            render: (text, record) => (
+                <span>{text} {newlyAddedProducts.includes(record._id) && <CheckCircleTwoTone twoToneColor="#52c41a" />}</span>
+            ),
+            sorter: (a, b) => a.productName.localeCompare(b.productName), // Sıralama işlevi
+        },
+        {
+            title: 'Satış',
+            dataIndex: 'soldQuantity',
+            key: 'soldQuantity',
+            editable: true,
+            sorter: (a, b) => a.soldQuantity - b.soldQuantity, // Sıralama işlevi
+        },
+        {
+            title: 'Hazırlandı',
+            dataIndex: 'preparedQuantity',
+            key: 'preparedQuantity',
+            editable: true,
+            sorter: (a, b) => a.preparedQuantity - b.preparedQuantity, // Sıralama işlevi
+        },
+        {
+            title: 'Yararsız',
+            dataIndex: 'unfitQuantity',
+            key: 'unfitQuantity',
+            editable: true,
+            sorter: (a, b) => a.unfitQuantity - b.unfitQuantity, // Sıralama işlevi
+        },
+        {
+            title: 'Satış Müddəti Bitmiş',
+            dataIndex: 'expiredQuantity',
+            key: 'expiredQuantity',
+            editable: true,
+            sorter: (a, b) => a.expiredQuantity - b.expiredQuantity, // Sıralama işlevi
+        },
+        {
+            title: 'Stokda',
+            dataIndex: 'stockQuantity',
+            key: 'stockQuantity',
+            editable: false,
+            sorter: (a, b) => a.stockQuantity - b.stockQuantity, // Sıralama işlevi
+        },
+        {
+            title: 'Qiyməti',
+            dataIndex: 'price',
+            key: 'price',
+            editable: true,
+            sorter: (a, b) => a.price - b.price, // Sıralama işlevi
+        },
+        {
+            title: 'Satış Məbləği',
+            dataIndex: 'totalPrice',
+            key: 'totalPrice',
+            editable: false,
+            sorter: (a, b) => a.totalPrice - b.totalPrice, // Sıralama işlevi
+        },
         {
             title: 'Əməliyyat',
             dataIndex: 'operation',
@@ -230,6 +279,7 @@ const ProductManagement = () => {
             ),
         },
     ];
+    
 
     const mergedColumns = columns.map((col) => {
         if (!col.editable) {

@@ -3,6 +3,7 @@ import productReducer from './productSlice'; // Örnek olarak
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
+
 // persistConfig'i tanımlıyoruz
 const persistConfig = {
   key: 'root',
@@ -20,6 +21,7 @@ const store = configureStore({
     getDefaultMiddleware({
       serializableCheck: false,  // Non-serializable kontrolünü kapatıyoruz
     }),
+  
 });
 
 export const persistor = persistStore(store);  // persistor'ı oluşturduk
